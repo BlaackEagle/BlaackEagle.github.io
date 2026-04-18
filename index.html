@@ -28,7 +28,7 @@
         html { scroll-behavior: smooth; }
         body { font-family: var(--font-main); background: var(--bg-primary); color: var(--text-primary); overflow-x: hidden; line-height: 1.7; }
         a { color: inherit; text-decoration: none; }
-
+ 
         /* ── Background ── */
         .bg-grid { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: linear-gradient(rgba(108,99,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(108,99,255,0.03) 1px, transparent 1px); background-size: 60px 60px; z-index: 0; pointer-events: none; }
         .bg-orb { position: fixed; border-radius: 50%; filter: blur(120px); pointer-events: none; z-index: 0; opacity: 0.4; }
@@ -36,9 +36,9 @@
         .bg-orb-2 { width: 500px; height: 500px; background: rgba(0,212,170,0.1); bottom: -100px; left: -150px; animation: orbFloat 25s ease-in-out infinite reverse; }
         .bg-orb-3 { width: 300px; height: 300px; background: rgba(255,107,107,0.08); top: 50%; left: 50%; animation: orbFloat 18s ease-in-out infinite 5s; }
         @keyframes orbFloat { 0%,100%{transform:translate(0,0) scale(1)} 33%{transform:translate(50px,-80px) scale(1.1)} 66%{transform:translate(-30px,60px) scale(0.9)} }
-
+ 
         .cursor-glow { position: fixed; width: 400px; height: 400px; background: radial-gradient(circle, rgba(108,99,255,0.08), transparent 70%); border-radius: 50%; pointer-events: none; z-index: 1; transform: translate(-50%,-50%); }
-
+ 
         /* ── Navbar ── */
         .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 1rem 2rem; background: rgba(10,10,15,0.8); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; transition: all 0.3s; }
         .navbar.scrolled { padding: 0.6rem 2rem; box-shadow: 0 4px 30px rgba(0,0,0,0.3); }
@@ -50,7 +50,7 @@
         .nav-links a:hover::after { width: 100%; }
         .nav-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 5px; }
         .nav-toggle span { width: 24px; height: 2px; background: var(--text-primary); transition: all 0.3s; }
-
+ 
         /* ── Hero ── */
         .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; z-index: 2; padding: 6rem 2rem 4rem; }
         .hero-content { text-align: center; max-width: 900px; }
@@ -74,7 +74,7 @@
         .scroll-indicator svg { width: 24px; height: 24px; color: var(--text-muted); }
         @keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(10px)} }
         @keyframes fadeInUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
-
+ 
         /* ── Sections ── */
         section { position: relative; z-index: 2; padding: 6rem 2rem; max-width: 1200px; margin: 0 auto; }
         .section-label { font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent); text-transform: uppercase; letter-spacing: 3px; margin-bottom: 0.5rem; }
@@ -82,7 +82,7 @@
         .section-subtitle { color: var(--text-secondary); font-size: 1.05rem; max-width: 600px; margin-bottom: 3rem; }
         .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.16,1,0.3,1); }
         .reveal.visible { opacity: 1; transform: translateY(0); }
-
+ 
         /* ── About ── */
         .about-text p { color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 1.02rem; }
         .about-text p strong { color: var(--text-primary); font-weight: 600; }
@@ -90,7 +90,7 @@
         .about-info-item { padding: 1rem 1.2rem; border-radius: 12px; background: var(--bg-card); border: 1px solid var(--border); }
         .about-info-item .info-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
         .about-info-item .info-value { font-weight: 600; font-size: 0.95rem; }
-
+ 
         /* ── Skills ── */
         .skills-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 2rem; }
         .skill-category { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; transition: all 0.4s; position: relative; overflow: hidden; }
@@ -106,7 +106,7 @@
         .skill-tag.green:hover { background: rgba(0,212,170,0.15); }
         .skill-tag.red { background: rgba(255,107,107,0.08); border-color: rgba(255,107,107,0.15); color: var(--accent-tertiary); }
         .skill-tag.red:hover { background: rgba(255,107,107,0.15); }
-
+ 
         /* ── Projects Grid ── */
         .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1.5rem; }
         .project-card {
@@ -115,7 +115,7 @@
             transition: all 0.4s; position: relative;
         }
         .project-card:hover { border-color: rgba(108,99,255,0.3); transform: translateY(-6px); box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
-
+ 
         .project-preview {
             height: 200px; position: relative; overflow: hidden;
             display: flex; align-items: center; justify-content: center;
@@ -132,7 +132,7 @@
         }
         .project-card:hover .overlay { background: rgba(108,99,255,0.15); }
         .project-card:hover .overlay span { opacity: 1; transform: translateY(0); }
-
+ 
         /* CSS art previews */
         .preview-deepcv {
             background: linear-gradient(135deg, #1a2332, #2a3f5f);
@@ -150,7 +150,7 @@
         .preview-deepcv .result-item .name { font-weight: 700; font-size: 0.65rem; margin-bottom: 4px; }
         .preview-deepcv .result-item .score { background: #e8f5e9; color: #2e7d32; padding: 2px 8px; border-radius: 4px; font-size: 0.6rem; font-weight: 600; display: inline-block; margin-bottom: 4px; }
         .preview-deepcv .result-item .passage { font-size: 0.5rem; color: #666; border-left: 3px solid var(--accent-secondary); padding-left: 6px; }
-
+ 
         .preview-cards {
             background: linear-gradient(135deg, #1a4a2e, #2d6b3f);
             background-image: repeating-linear-gradient(45deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 2px, transparent 2px, transparent 20px);
@@ -161,7 +161,7 @@
         .css-card-hand { position: absolute; bottom: 10px; display: flex; gap: 6px; }
         .css-card-hand .css-card { width: 40px; height: 56px; font-size: 1.1rem; }
         .chat-bubble { position: absolute; top: 12px; right: 12px; background: rgba(0,0,0,0.6); border-radius: 8px; padding: 6px 10px; font-size: 0.55rem; color: #fff; }
-
+ 
         .preview-minigames {
             background: linear-gradient(135deg, #1a1a2e, #2d1b4e);
             width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; padding: 20px;
@@ -171,7 +171,7 @@
         .preview-minigames .letter-tile { width: 36px; height: 36px; background: linear-gradient(135deg, #f39c12, #e67e22); color: #fff; font-weight: 800; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; border-radius: 6px; box-shadow: 0 3px 8px rgba(0,0,0,0.3); }
         .preview-minigames .score-bar { display: flex; gap: 12px; font-size: 0.65rem; color: rgba(255,255,255,0.7); }
         .preview-minigames .score-bar span { background: rgba(255,255,255,0.1); padding: 4px 10px; border-radius: 4px; }
-
+ 
         .preview-hex {
             background: linear-gradient(135deg, #0d1b2a, #1b2838);
             width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
@@ -181,13 +181,13 @@
         .hex-cell { width: 18px; height: 18px; clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); background: rgba(255,255,255,0.1); transition: background 0.3s; }
         .hex-cell.blue { background: #3498db; }
         .hex-cell.red { background: #e74c3c; }
-
+ 
         .project-card-body { padding: 1.2rem 1.5rem 1.5rem; }
         .project-card-body h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.4rem; }
         .project-card-body .project-short { color: var(--text-secondary); font-size: 0.85rem; line-height: 1.6; margin-bottom: 1rem; }
         .project-tech { display: flex; flex-wrap: wrap; gap: 6px; }
         .project-tech span { padding: 4px 10px; border-radius: 6px; font-size: 0.72rem; font-family: var(--font-mono); font-weight: 500; background: rgba(0,212,170,0.08); color: var(--accent-secondary); border: 1px solid rgba(0,212,170,0.12); }
-
+ 
         /* ── Project Modal ── */
         .modal-overlay {
             position: fixed; inset: 0; background: rgba(0,0,0,0.7); backdrop-filter: blur(8px);
@@ -204,7 +204,7 @@
         .modal-overlay.active .modal { transform: translateY(0); }
         .modal::-webkit-scrollbar { width: 6px; }
         .modal::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
-
+ 
         .modal-close {
             position: sticky; top: 0; float: right; margin: 1rem;
             width: 36px; height: 36px; border-radius: 50%;
@@ -212,11 +212,11 @@
             font-size: 1.2rem; cursor: pointer; transition: all 0.3s; z-index: 10;
         }
         .modal-close:hover { background: var(--accent-tertiary); }
-
+ 
         .modal-header { padding: 2rem 2rem 0; }
         .modal-header h2 { font-size: 1.5rem; font-weight: 800; margin-bottom: 0.3rem; }
         .modal-header .modal-type { font-size: 0.8rem; color: var(--accent-light); font-weight: 500; margin-bottom: 1rem; }
-
+ 
         .modal-body { padding: 1.5rem 2rem 2rem; }
         .modal-body h4 { font-size: 0.95rem; font-weight: 700; margin: 1.5rem 0 0.6rem; color: var(--text-primary); }
         .modal-body h4:first-child { margin-top: 0; }
@@ -231,7 +231,7 @@
         .modal-links .ml-github { background: rgba(255,255,255,0.08); color: var(--text-primary); border: 1px solid var(--border); }
         .modal-links .ml-github:hover { border-color: var(--accent); background: rgba(108,99,255,0.1); }
         .modal-links .ml-github svg { width: 18px; height: 18px; }
-
+ 
         /* ── Modal Image Gallery ── */
         .modal-gallery { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 8px; margin-bottom: 1rem; scroll-snap-type: x mandatory; }
         .modal-gallery::-webkit-scrollbar { height: 4px; }
@@ -241,7 +241,7 @@
             border: 2px solid var(--border); transition: all 0.3s; scroll-snap-align: start; flex-shrink: 0;
         }
         .modal-gallery img:hover { border-color: var(--accent); transform: scale(1.02); }
-
+ 
         /* Lightbox */
         .lightbox {
             position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 3000;
@@ -263,7 +263,7 @@
         .lightbox-nav:hover { background: rgba(255,255,255,0.25); }
         .lightbox-nav.prev { left: 20px; }
         .lightbox-nav.next { right: 20px; }
-
+ 
         /* ── Timeline ── */
         .timeline { position: relative; padding-left: 3rem; }
         .timeline::before { content: ''; position: absolute; left: 8px; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--accent), var(--accent-secondary), transparent); }
@@ -273,7 +273,7 @@
         .timeline-item h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.3rem; }
         .timeline-item .institution { color: var(--accent-secondary); font-weight: 500; margin-bottom: 0.5rem; }
         .timeline-item p { color: var(--text-secondary); font-size: 0.9rem; }
-
+ 
         /* ── CV Section ── */
         .cv-section {
             text-align: center; padding: 4rem 2rem; position: relative; z-index: 2;
@@ -286,7 +286,12 @@
         .cv-icon { font-size: 3rem; }
         .cv-embed h3 { font-size: 1.3rem; font-weight: 700; }
         .cv-embed p { color: var(--text-secondary); font-size: 0.95rem; max-width: 400px; }
-
+        .cv-iframe-wrapper {
+            width: 100%; max-width: 800px; margin: 1.5rem auto 0;
+            border-radius: 12px; overflow: hidden; border: 1px solid var(--border);
+        }
+        .cv-iframe-wrapper iframe { width: 100%; height: 600px; border: none; }
+ 
         /* ── Contact ── */
         .contact-section { text-align: center; padding: 6rem 2rem 4rem; position: relative; z-index: 2; max-width: 800px; margin: 0 auto; }
         .contact-links { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; }
@@ -294,10 +299,10 @@
         .contact-card:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
         .contact-card svg { width: 20px; height: 20px; color: var(--accent); }
         .contact-card span { font-weight: 500; font-size: 0.9rem; }
-
+ 
         /* ── Footer ── */
         footer { text-align: center; padding: 2rem; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.8rem; position: relative; z-index: 2; }
-
+ 
         /* ── Responsive ── */
         @media (max-width: 900px) {
             .projects-grid { grid-template-columns: 1fr; }
@@ -322,7 +327,7 @@
     <div class="bg-orb bg-orb-2"></div>
     <div class="bg-orb bg-orb-3"></div>
     <div class="cursor-glow" id="cursorGlow"></div>
-
+ 
     <!-- Navbar -->
     <nav class="navbar" id="navbar">
         <a href="#hero" class="nav-logo">JK.</a>
@@ -337,7 +342,7 @@
             <span></span><span></span><span></span>
         </button>
     </nav>
-
+ 
     <!-- Hero -->
     <section class="hero" id="hero">
         <div class="hero-content">
@@ -362,7 +367,7 @@
         </div>
         <div class="scroll-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></div>
     </section>
-
+ 
     <!-- About -->
     <section id="about">
         <div class="reveal">
@@ -383,7 +388,7 @@
             </div>
         </div>
     </section>
-
+ 
     <!-- Skills -->
     <section id="skills">
         <div class="reveal">
@@ -428,7 +433,7 @@
             </div>
         </div>
     </section>
-
+ 
     <!-- Projects -->
     <section id="projects">
         <div class="reveal">
@@ -437,7 +442,7 @@
             <p class="section-subtitle">Des applications concretes, du back au front, en passant par l'IA. Cliquez pour en savoir plus.</p>
         </div>
         <div class="projects-grid">
-
+ 
             <!-- DeepCV -->
             <div class="project-card reveal" onclick="openModal('deepcv')">
                 <div class="project-preview">
@@ -469,7 +474,7 @@
                     <div class="project-tech"><span>Python</span><span>Flask</span><span>BERT</span><span>NLP</span><span>Deep Learning</span></div>
                 </div>
             </div>
-
+ 
             <!-- Jeu de Cartes -->
             <div class="project-card reveal" onclick="openModal('cartes')">
                 <div class="project-preview">
@@ -492,7 +497,7 @@
                     <div class="project-tech"><span>Node.js</span><span>React.js</span><span>Socket.IO</span><span>Express</span></div>
                 </div>
             </div>
-
+ 
             <!-- Mini-Jeux -->
             <div class="project-card reveal" onclick="openModal('minijeux')">
                 <div class="project-preview">
@@ -512,7 +517,7 @@
                     <div class="project-tech"><span>Flask</span><span>Socket.IO</span><span>JavaScript</span><span>WebSockets</span></div>
                 </div>
             </div>
-
+ 
             <!-- Hex -->
             <div class="project-card reveal" onclick="openModal('hex')">
                 <div class="project-preview">
@@ -527,10 +532,10 @@
                     <div class="project-tech"><span>JavaScript</span><span>HTML5</span><span>Node.js</span><span>WebSockets</span></div>
                 </div>
             </div>
-
+ 
         </div>
     </section>
-
+ 
     <!-- Modal -->
     <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
         <div class="modal" onclick="event.stopPropagation()">
@@ -542,7 +547,7 @@
             <div class="modal-body" id="modalBody"></div>
         </div>
     </div>
-
+ 
     <!-- Education -->
     <section id="education">
         <div class="reveal">
@@ -571,20 +576,23 @@
             </div>
         </div>
     </section>
-
+ 
     <!-- CV Download -->
-    <div class="cv-section">
+    <div class="cv-section" id="cv">
         <div class="cv-embed reveal">
             <div class="cv-icon">&#x1F4C4;</div>
             <h3>Mon CV</h3>
-            <p>Telecharger mon CV complet au format PDF pour en savoir plus sur mon parcours.</p>
-            <a href="CV_KabouriJaouad.pdf" download class="btn btn-primary">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                Telecharger le CV
+            <p>Consultez mon CV complet directement ci-dessous, ou ouvrez-le dans un nouvel onglet.</p>
+            <a href="CV_KabouriJaouad.pdf" target="_blank" class="btn btn-primary">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="9" y1="3" x2="9" y2="21"/></svg>
+                Ouvrir le CV
             </a>
+            <div class="cv-iframe-wrapper">
+                <iframe src="CV_KabouriJaouad.pdf" title="CV Jaouad Kabouri"></iframe>
+            </div>
         </div>
     </div>
-
+ 
     <!-- Contact -->
     <section class="contact-section" id="contact">
         <div class="reveal">
@@ -607,9 +615,9 @@
             </div>
         </div>
     </section>
-
+ 
     <footer><p>&copy; 2026 Jaouad Kabouri — Construit avec passion depuis Montpellier.</p></footer>
-
+ 
     <!-- Lightbox -->
     <div class="lightbox" id="lightbox" onclick="closeLightbox()">
         <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
@@ -617,26 +625,26 @@
         <img id="lbImg" src="" alt="Zoom" onclick="event.stopPropagation()" />
         <button class="lightbox-nav next" onclick="event.stopPropagation(); lbNav(1)">&#8250;</button>
     </div>
-
+ 
     <script>
         // ── Cursor glow ──
         const glow = document.getElementById('cursorGlow');
         if (window.matchMedia('(pointer: fine)').matches) {
             document.addEventListener('mousemove', e => { glow.style.left = e.clientX+'px'; glow.style.top = e.clientY+'px'; });
         } else { glow.style.display = 'none'; }
-
+ 
         // ── Navbar ──
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 50));
         function toggleNav() { document.getElementById('navLinks').classList.toggle('active'); }
         function closeNav() { document.getElementById('navLinks').classList.remove('active'); }
-
+ 
         // ── Scroll reveal ──
         const observer = new IntersectionObserver(entries => {
             entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
         }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
+ 
         // ── Active nav link ──
         const sections = document.querySelectorAll('section[id]');
         const navLinksAll = document.querySelectorAll('.nav-links a');
@@ -645,7 +653,7 @@
             sections.forEach(s => { if (window.scrollY >= s.offsetTop - 150) current = s.id; });
             navLinksAll.forEach(l => l.style.color = l.getAttribute('href') === '#'+current ? 'var(--text-primary)' : '');
         });
-
+ 
         // ── Counter ──
         function animateCounters() {
             document.querySelectorAll('.hero-stat .number').forEach(el => {
@@ -658,7 +666,7 @@
         }
         const heroObs = new IntersectionObserver(e => { if (e[0].isIntersecting) { animateCounters(); heroObs.disconnect(); } });
         heroObs.observe(document.querySelector('.hero'));
-
+ 
         // ── Hex preview grid ──
         const hexPreview = document.getElementById('hexPreview');
         const blueHexes = [[1,2],[2,3],[3,3],[4,4],[5,5]];
@@ -676,15 +684,15 @@
             }
             hexPreview.appendChild(row);
         }
-
+ 
         // ── Project Modals ──
         const githubSvg = '<svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>';
-
+ 
         const projects = {
             deepcv: {
                 title: 'DeepCV — Moteur de Recherche Semantique de CV',
                 type: 'Projet IA & NLP — 2026',
-                images: ['images/deepcv-ui.png', 'images/deepcv-code.png'],
+                images: ['images/deepcv-ui.png.jpg', 'images/deepcv-code.png.jpg'],
                 body: `
                     <h4>Contexte</h4>
                     <p>Projet realise dans le cadre de la troisieme annee de Licence Informatique. L'objectif : automatiser le tri de candidatures en mesurant la proximite semantique entre une offre de poste et un ensemble de CVs au format PDF.</p>
@@ -712,7 +720,7 @@
             cartes: {
                 title: '8 Americain — Jeu de Cartes Multijoueur en Ligne',
                 type: 'Projet Full-Stack — 2024',
-                images: ['images/cartes-jeu.png'],
+                images: ['images/cartes-jeu.png.jpg'],
                 body: `
                     <h4>Contexte</h4>
                     <p>Application web Full-Stack permettant de jouer au 8 Americain (variante du Crazy Eights) en temps reel avec d'autres joueurs. Projet realise dans le cadre d'un cours de developpement web.</p>
@@ -783,11 +791,11 @@
                     </div>`
             }
         };
-
+ 
         // ── Lightbox state ──
         let lbImages = [];
         let lbIndex = 0;
-
+ 
         function openModal(id) {
             const p = projects[id];
             if (!p) return;
