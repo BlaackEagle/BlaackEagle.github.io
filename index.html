@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jaouad Kabouri — Portfolio</title>
+    <meta name="description" content="Jaouad Kabouri — Développeur Full-Stack & IA à Montpellier. Découvrez mes projets, compétences et parcours.">
+    <meta name="theme-color" content="#f1e9d6">
+    <link rel="canonical" href="https://jaouadkabouri.dev/">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='14' fill='%232b6049'/%3E%3Ctext x='50' y='70' font-size='50' font-family='Arial,sans-serif' font-weight='900' fill='%23f1e9d6' text-anchor='middle'%3EJK%3C/text%3E%3C/svg%3E">
+
+    <!-- Open Graph / LinkedIn Preview -->
+    <meta property="og:title" content="Jaouad Kabouri — Portfolio" />
+    <meta property="og:description" content="Développeur Full-Stack & IA — Découvrez mes projets, compétences et parcours." />
+    <meta property="og:image" content="https://jaouadkabouri.dev/images/og-preview.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:url" content="https://jaouadkabouri.dev" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --paper: #f1e9d6;
+            --paper-soft: #e7dcc1;
+            --ink: #2a2418;
+            --ink-soft: #5c5240;
+            --ink-faint: #94896f;
+            --accent: #2b6049;
+            --accent-soft: rgba(43, 96, 73, 0.08);
+            --pop: #c4502e;
+            --line: #2a2418;
+            --shadow-hard: 6px 6px 0 var(--ink);
+            --shadow-hard-sm: 4px 4px 0 var(--ink);
+            --font-main: 'Inter', -apple-system, sans-serif;
+            --font-display: 'Syne', sans-serif;
+            --font-mono: 'Space Mono', monospace;
+        }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font-main); background: var(--paper); color: var(--ink); overflow-x: hidden; line-height: 1.7; }
+        a { color: inherit; text-decoration: none; }
+        ::selection { background: var(--accent); color: var(--paper); }
+
+        /* ── Fond : grille de carnet technique ── */
+        .bg-grid {
+            position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.45;
+            background-image:
+                linear-gradient(rgba(42,36,24,0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(42,36,24,0.05) 1px, transparent 1px);
+            background-size: 48px 48px;
+        }
+
+        /* ── Navbar ── */
+        .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 1rem 2rem; background: var(--paper); border-bottom: 2px solid var(--line); display: flex; justify-content: space-between; align-items: center; transition: padding 0.3s; }
+        .navbar.scrolled { padding: 0.6rem 2rem; }
+        .nav-logo { font-family: var(--font-display); font-weight: 800; font-size: 1.3rem; letter-spacing: -0.5px; color: var(--ink); display: inline-flex; align-items: center; gap: 10px; }
+        .nav-logo .logo-block { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; background: var(--accent); color: var(--paper); font-size: 0.85rem; border: 2px solid var(--ink); box-shadow: 3px 3px 0 var(--ink); }
+        .nav-links { display: flex; gap: 1.8rem; list-style: none; }
+        .nav-links a { font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--ink-soft); transition: color 0.2s; position: relative; }
+        .nav-links a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 3px; background: var(--pop); transition: width 0.25s; }
+        .nav-links a:hover { color: var(--ink); }
+        .nav-links a:hover::after { width: 100%; }
+        .nav-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 5px; }
+        .nav-toggle span { width: 26px; height: 3px; background: var(--ink); transition: all 0.3s; }
+
+        /* ── Hero ── */
+        .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; position: relative; z-index: 2; padding: 8rem 2rem 6rem; max-width: 1180px; margin: 0 auto; }
+        .hero-badge { display: inline-flex; align-items: center; gap: 10px; padding: 8px 16px; background: var(--paper); border: 2px solid var(--line); box-shadow: var(--shadow-hard-sm); font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; width: fit-content; margin-bottom: 2.5rem; animation: fadeInUp 0.7s ease-out; }
+        .hero-badge .dot { width: 9px; height: 9px; background: var(--pop); animation: pulse 2s infinite; }
+        @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.25} }
+        .hero h1 { font-family: var(--font-display); font-size: clamp(3.2rem, 11vw, 8rem); font-weight: 800; line-height: 0.95; letter-spacing: -2px; text-transform: uppercase; margin-bottom: 2rem; animation: fadeInUp 0.7s ease-out 0.1s both; }
+        .hero h1 .stroke-text { color: transparent; -webkit-text-stroke: 2.5px var(--ink); }
+        .hero h1 .accent-text { color: var(--accent); }
+        .hero-subtitle { font-size: clamp(1rem, 2vw, 1.2rem); color: var(--ink-soft); max-width: 620px; margin-bottom: 2.8rem; line-height: 1.8; border-left: 4px solid var(--pop); padding-left: 1.2rem; animation: fadeInUp 0.7s ease-out 0.2s both; }
+        .hero-cta { display: flex; gap: 1.2rem; flex-wrap: wrap; animation: fadeInUp 0.7s ease-out 0.3s both; }
+        .btn { padding: 14px 28px; font-family: var(--font-mono); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; border: 2px solid var(--line); display: inline-flex; align-items: center; gap: 10px; transition: transform 0.15s, box-shadow 0.15s, background 0.15s, color 0.15s; box-shadow: var(--shadow-hard-sm); }
+        .btn:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--ink); }
+        .btn:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--ink); }
+        .btn-primary { background: var(--accent); color: var(--paper); }
+        .btn-outline { background: var(--paper); color: var(--ink); }
+        .btn-outline:hover { background: var(--pop); color: var(--paper); }
+        .hero-stats { display: flex; gap: 0; margin-top: 4.5rem; width: fit-content; border: 2px solid var(--line); box-shadow: var(--shadow-hard); background: var(--paper); animation: fadeInUp 0.7s ease-out 0.4s both; }
+        .hero-stat { padding: 1.2rem 2.2rem; border-right: 2px solid var(--line); }
+        .hero-stat:last-child { border-right: none; }
+        .hero-stat .number { font-family: var(--font-display); font-size: 2.2rem; font-weight: 800; color: var(--accent); line-height: 1.1; }
+        .hero-stat .label { font-family: var(--font-mono); font-size: 0.68rem; font-weight: 700; color: var(--ink-faint); text-transform: uppercase; letter-spacing: 1.5px; }
+        @keyframes fadeInUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+
+        /* ── Bandeau défilant ── */
+        .marquee { background: var(--ink); color: var(--paper); border-top: 2px solid var(--line); border-bottom: 2px solid var(--line); overflow: hidden; padding: 0.85rem 0; position: relative; z-index: 2; }
+        .marquee-track { display: flex; width: max-content; animation: marquee 22s linear infinite; }
+        .marquee span { font-family: var(--font-mono); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; padding: 0 1.4rem; white-space: nowrap; }
+        .marquee span em { font-style: normal; color: var(--pop); }
+        @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+        /* ── Sections ── */
+        section { position: relative; z-index: 2; padding: 6.5rem 2rem; max-width: 1180px; margin: 0 auto; }
+        .section-head { display: flex; align-items: baseline; gap: 1.4rem; margin-bottom: 1.2rem; }
+        .section-num { font-family: var(--font-display); font-size: clamp(2.4rem, 5vw, 3.6rem); font-weight: 800; color: transparent; -webkit-text-stroke: 2px var(--accent); line-height: 1; }
+        .section-title { font-family: var(--font-display); font-size: clamp(2rem, 4.5vw, 3.2rem); font-weight: 800; text-transform: uppercase; letter-spacing: -1px; line-height: 1.05; }
+        .section-subtitle { color: var(--ink-soft); font-size: 1.02rem; max-width: 620px; margin-bottom: 3.2rem; }
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.7s cubic-bezier(0.16,1,0.3,1); }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        /* ── About ── */
+        .about-text p { color: var(--ink-soft); margin-bottom: 1.5rem; font-size: 1.02rem; }
+        .about-text p strong { color: var(--ink); font-weight: 700; background: linear-gradient(transparent 65%, rgba(196,80,46,0.28) 65%); }
+        .about-info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-top: 2.4rem; border: 2px solid var(--line); box-shadow: var(--shadow-hard); background: var(--paper); }
+        .about-info-item { padding: 1.1rem 1.4rem; border-bottom: 2px solid var(--line); }
+        .about-info-item:nth-child(odd) { border-right: 2px solid var(--line); }
+        .about-info-item:nth-last-child(-n+2) { border-bottom: none; }
+        .about-info-item .info-label { font-family: var(--font-mono); font-size: 0.66rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 4px; }
+        .about-info-item .info-value { font-weight: 700; font-size: 0.95rem; }
+
+        /* ── Skills ── */
+        .skills-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1.8rem; }
+        .skill-category { background: var(--paper); border: 2px solid var(--line); padding: 2rem; transition: transform 0.2s, box-shadow 0.2s; box-shadow: var(--shadow-hard-sm); position: relative; }
+        .skill-category:hover { transform: translate(-3px, -3px); box-shadow: 8px 8px 0 var(--ink); }
+        .skill-category::before { content: attr(data-index); position: absolute; top: -2px; right: -2px; font-family: var(--font-mono); font-size: 0.7rem; font-weight: 700; background: var(--ink); color: var(--paper); padding: 4px 10px; }
+        .skill-category-icon { font-size: 1.6rem; margin-bottom: 1rem; }
+        .skill-category h3 { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 1.2rem; }
+        .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+        .skill-tag { padding: 6px 13px; font-size: 0.78rem; font-weight: 600; background: var(--paper); border: 1.5px solid var(--line); color: var(--ink-soft); transition: all 0.18s; }
+        .skill-tag:hover { background: var(--accent); border-color: var(--accent); color: var(--paper); }
+
+        /* ── Projects Grid ── */
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1.8rem; }
+        .project-card {
+            background: var(--paper); border: 2px solid var(--line);
+            overflow: hidden; cursor: pointer; position: relative;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: var(--shadow-hard-sm);
+        }
+        .project-card:hover { transform: translate(-4px, -4px); box-shadow: 10px 10px 0 var(--ink); }
+
+        .project-preview {
+            height: 200px; position: relative; overflow: hidden;
+            display: flex; align-items: center; justify-content: center;
+            border-bottom: 2px solid var(--line);
+        }
+        .project-preview > img.preview-img { width: 100%; height: 100%; object-fit: cover; object-position: top; transition: transform 0.5s; filter: saturate(0.9); }
+        .project-card:hover .preview-img { transform: scale(1.04); }
+        .project-preview .overlay {
+            position: absolute; inset: 0; background: rgba(43,96,73,0);
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.25s; z-index: 2;
+        }
+        .project-preview .overlay span {
+            opacity: 0; transform: translateY(8px);
+            background: var(--paper); color: var(--ink); border: 2px solid var(--line);
+            box-shadow: var(--shadow-hard-sm); padding: 9px 20px;
+            font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 1px; transition: all 0.25s;
+        }
+        .project-card:hover .overlay { background: rgba(43,96,73,0.5); }
+        .project-card:hover .overlay span { opacity: 1; transform: translateY(0); }
+
+        /* Aperçus CSS pour les projets sans capture d'écran */
+        .preview-minigames {
+            background: var(--paper-soft);
+            width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; padding: 20px;
+        }
+        .preview-minigames .game-title { color: var(--ink); font-family: var(--font-display); font-weight: 800; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.5px; }
+        .preview-minigames .letter-grid { display: flex; gap: 6px; }
+        .preview-minigames .letter-tile { width: 36px; height: 36px; background: var(--accent); color: var(--paper); font-weight: 800; font-size: 0.95rem; display: flex; align-items: center; justify-content: center; border: 2px solid var(--ink); box-shadow: 3px 3px 0 var(--ink); }
+        .preview-minigames .letter-tile:nth-child(3) { background: var(--pop); }
+        .preview-minigames .score-bar { display: flex; gap: 12px; font-size: 0.62rem; font-family: var(--font-mono); font-weight: 700; color: var(--ink-soft); }
+        .preview-minigames .score-bar span { background: var(--paper); border: 1.5px solid var(--ink); padding: 4px 10px; }
+
+        .preview-hex {
+            background: var(--paper-soft);
+            width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
+        }
+        .hex-grid-preview { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+        .hex-row { display: flex; gap: 3px; }
+        .hex-cell { width: 18px; height: 18px; clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); background: rgba(42,36,24,0.12); }
+        .hex-cell.blue { background: var(--accent); }
+        .hex-cell.red { background: var(--pop); }
+
+        .project-card-body { padding: 1.3rem 1.5rem 1.5rem; }
+        .project-card-body h3 { font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; line-height: 1.3; }
+        .project-card-body .project-short { color: var(--ink-soft); font-size: 0.85rem; line-height: 1.6; margin-bottom: 1rem; }
+        .project-tech { display: flex; flex-wrap: wrap; gap: 6px; }
+        .project-tech span { padding: 3px 10px; font-size: 0.7rem; font-family: var(--font-mono); font-weight: 700; background: var(--accent-soft); color: var(--accent); border: 1.5px solid var(--accent); }
+
+        /* ── Project Modal ── */
+        .modal-overlay {
+            position: fixed; inset: 0; background: rgba(42,36,24,0.55);
+            z-index: 2000; display: none; align-items: center; justify-content: center;
+            padding: 2rem; opacity: 0; transition: opacity 0.3s;
+        }
+        .modal-overlay.active { display: flex; opacity: 1; }
+        .modal {
+            background: var(--paper); border: 2px solid var(--line); box-shadow: 10px 10px 0 var(--ink);
+            max-width: 780px; width: 100%; max-height: 85vh; overflow-y: auto;
+            transform: translateY(20px); transition: transform 0.3s;
+            scrollbar-width: thin; scrollbar-color: var(--accent) transparent;
+        }
+        .modal-overlay.active .modal { transform: translateY(0); }
+        .modal::-webkit-scrollbar { width: 6px; }
+        .modal::-webkit-scrollbar-thumb { background: var(--accent); }
+
+        .modal-close {
+            position: sticky; top: 0; float: right; margin: 1rem;
+            width: 38px; height: 38px;
+            background: var(--paper); border: 2px solid var(--line); color: var(--ink);
+            font-size: 1.2rem; font-weight: 700; cursor: pointer; transition: all 0.2s; z-index: 10;
+            box-shadow: 3px 3px 0 var(--ink);
+        }
+        .modal-close:hover { background: var(--pop); color: var(--paper); }
+
+        .modal-header { padding: 2rem 2rem 0; }
+        .modal-header h2 { font-family: var(--font-display); font-size: 1.5rem; font-weight: 800; line-height: 1.25; margin-bottom: 0.4rem; }
+        .modal-header .modal-type { font-family: var(--font-mono); font-size: 0.74rem; font-weight: 700; color: var(--paper); background: var(--accent); display: inline-block; padding: 3px 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem; }
+
+        .modal-body { padding: 1.5rem 2rem 2rem; }
+        .modal-body h4 { font-family: var(--font-display); font-size: 0.95rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin: 1.6rem 0 0.6rem; color: var(--ink); border-bottom: 2px solid var(--line); padding-bottom: 4px; width: fit-content; }
+        .modal-body h4:first-child { margin-top: 0; }
+        .modal-body p { color: var(--ink-soft); font-size: 0.9rem; line-height: 1.8; margin-bottom: 0.8rem; }
+        .modal-body ul { list-style: none; margin-bottom: 1rem; }
+        .modal-body ul li { padding: 5px 0; color: var(--ink-soft); font-size: 0.88rem; display: flex; align-items: flex-start; gap: 10px; }
+        .modal-body ul li::before { content: ''; width: 8px; height: 8px; background: var(--pop); flex-shrink: 0; margin-top: 8px; }
+        .modal-body ul li strong { color: var(--ink); }
+        .modal-tech { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 1rem; }
+        .modal-tech span { padding: 5px 13px; font-size: 0.74rem; font-family: var(--font-mono); font-weight: 700; background: var(--accent-soft); color: var(--accent); border: 1.5px solid var(--accent); }
+        .modal-links { display: flex; gap: 12px; margin-top: 1.6rem; padding-top: 1.5rem; border-top: 2px solid var(--line); }
+        .modal-links a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; transition: all 0.18s; }
+        .modal-links .ml-github { background: var(--ink); color: var(--paper); border: 2px solid var(--line); box-shadow: var(--shadow-hard-sm); }
+        .modal-links .ml-github:hover { background: var(--accent); transform: translate(-2px,-2px); box-shadow: 6px 6px 0 var(--ink); }
+        .modal-links .ml-github svg { width: 18px; height: 18px; }
+
+        /* ── Vidéo de démo dans la modale ── */
+        .modal-video { margin-bottom: 1.2rem; }
+        .modal-video video {
+            width: 100%; border: 2px solid var(--line);
+            display: block; background: #000;
+        }
+        .modal-video .video-caption { font-family: var(--font-mono); font-size: 0.7rem; font-weight: 700; color: var(--ink-faint); margin-top: 6px; }
+
+        /* ── Galerie d'images dans la modale ── */
+        .modal-gallery { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 8px; margin-bottom: 1rem; scroll-snap-type: x mandatory; }
+        .modal-gallery::-webkit-scrollbar { height: 4px; }
+        .modal-gallery::-webkit-scrollbar-thumb { background: var(--accent); }
+        .modal-gallery img {
+            height: 180px; cursor: pointer; object-fit: cover;
+            border: 2px solid var(--line); transition: all 0.25s; scroll-snap-align: start; flex-shrink: 0;
+        }
+        .modal-gallery img:hover { border-color: var(--accent); transform: scale(1.02); }
+
+        /* Lightbox */
+        .lightbox {
+            position: fixed; inset: 0; background: rgba(42,36,24,0.92); z-index: 3000;
+            display: none; align-items: center; justify-content: center; cursor: zoom-out;
+        }
+        .lightbox.active { display: flex; }
+        .lightbox img { max-width: 90vw; max-height: 90vh; border: 2px solid var(--paper); object-fit: contain; }
+        .lightbox-close {
+            position: fixed; top: 20px; right: 20px; width: 42px; height: 42px;
+            background: var(--paper); border: 2px solid var(--ink);
+            color: var(--ink); font-size: 1.4rem; font-weight: 700; cursor: pointer; z-index: 3001;
+        }
+        .lightbox-close:hover { background: var(--pop); color: var(--paper); }
+        .lightbox-nav {
+            position: fixed; top: 50%; transform: translateY(-50%);
+            width: 46px; height: 46px; background: var(--paper); border: 2px solid var(--ink);
+            color: var(--ink); font-size: 1.3rem; font-weight: 700; cursor: pointer; z-index: 3001;
+        }
+        .lightbox-nav:hover { background: var(--accent); color: var(--paper); }
+        .lightbox-nav.prev { left: 20px; }
+        .lightbox-nav.next { right: 20px; }
+
+        /* ── Timeline ── */
+        .timeline { position: relative; padding-left: 3rem; }
+        .timeline::before { content: ''; position: absolute; left: 9px; top: 6px; bottom: 0; width: 2px; background: var(--ink); }
+        .timeline-item { position: relative; margin-bottom: 3rem; }
+        .timeline-item::before { content: ''; position: absolute; left: -2.68rem; top: 6px; width: 14px; height: 14px; background: var(--pop); border: 2px solid var(--ink); }
+        .timeline-date { font-family: var(--font-mono); font-size: 0.74rem; font-weight: 700; color: var(--paper); background: var(--ink); display: inline-block; padding: 2px 10px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.6rem; }
+        .timeline-item h3 { font-family: var(--font-display); font-size: 1.15rem; font-weight: 700; margin-bottom: 0.3rem; }
+        .timeline-item .institution { color: var(--accent); font-weight: 600; font-size: 0.9rem; margin-bottom: 0.5rem; }
+        .timeline-item p { color: var(--ink-soft); font-size: 0.9rem; }
+
+        /* ── CV Section ── */
+        .cv-section {
+            text-align: center; padding: 4rem 2rem; position: relative; z-index: 2;
+            max-width: 800px; margin: 0 auto;
+        }
+        .cv-embed {
+            background: var(--paper); border: 2px solid var(--line); box-shadow: var(--shadow-hard);
+            padding: 2.5rem; display: flex; flex-direction: column; align-items: center; gap: 1.5rem;
+        }
+        .cv-icon { font-size: 2.6rem; }
+        .cv-embed h3 { font-family: var(--font-display); font-size: 1.4rem; font-weight: 800; text-transform: uppercase; }
+        .cv-embed p { color: var(--ink-soft); font-size: 0.95rem; max-width: 400px; }
+        .cv-iframe-wrapper {
+            width: 100%; max-width: 800px; margin: 1.5rem auto 0;
+            overflow: hidden; border: 2px solid var(--line); background: #fff;
+        }
+        .cv-iframe-wrapper iframe { width: 100%; height: 600px; border: none; display: block; }
+        .cv-iframe-wrapper canvas { width: 100%; height: auto; display: block; }
+        .cv-iframe-wrapper canvas + canvas { border-top: 2px solid var(--line); }
+        .cv-loading { font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700; color: var(--ink-faint); text-transform: uppercase; letter-spacing: 1px; padding: 3rem 1rem; background: var(--paper); }
+
+        /* ── Contact ── */
+        .contact-section { text-align: center; padding: 6rem 2rem 5rem; position: relative; z-index: 2; max-width: 800px; margin: 0 auto; }
+        .contact-section .section-head { justify-content: center; }
+        .contact-links { display: flex; justify-content: center; gap: 1.2rem; flex-wrap: wrap; margin-top: 2rem; }
+        .contact-card { display: flex; align-items: center; gap: 12px; padding: 1rem 1.5rem; background: var(--paper); border: 2px solid var(--line); box-shadow: var(--shadow-hard-sm); transition: all 0.18s; cursor: pointer; }
+        .contact-card:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 var(--ink); background: var(--accent); color: var(--paper); }
+        .contact-card:hover svg { color: var(--paper); }
+        .contact-card svg { width: 20px; height: 20px; color: var(--accent); transition: color 0.18s; }
+        .contact-card span { font-weight: 600; font-size: 0.9rem; }
+
+        /* ── Footer ── */
+        footer { text-align: center; padding: 2rem; background: var(--ink); color: var(--paper-soft); font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; position: relative; z-index: 2; border-top: 2px solid var(--line); }
+        footer em { font-style: normal; color: var(--pop); }
+
+        /* ── Responsive ── */
+        @media (max-width: 900px) {
+            .projects-grid { grid-template-columns: 1fr; }
+            .hero-stats { flex-direction: column; width: 100%; }
+            .hero-stat { border-right: none; border-bottom: 2px solid var(--line); }
+            .hero-stat:last-child { border-bottom: none; }
+        }
+        @media (max-width: 700px) {
+            .nav-links { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--paper); flex-direction: column; align-items: center; justify-content: center; gap: 2.5rem; }
+            .nav-links.active { display: flex; }
+            .nav-links a { font-size: 1.1rem; }
+            .nav-toggle { display: flex; z-index: 1001; }
+            .about-info-grid { grid-template-columns: 1fr; }
+            .about-info-item:nth-child(odd) { border-right: none; }
+            .about-info-item { border-bottom: 2px solid var(--line) !important; }
+            .about-info-item:last-child { border-bottom: none !important; }
+            .skills-container { grid-template-columns: 1fr; }
+            section { padding: 4.5rem 1.2rem; }
+            .modal { max-height: 95vh; }
+            .modal-body, .modal-header { padding-left: 1.2rem; padding-right: 1.2rem; }
+            .cv-iframe-wrapper iframe { height: 420px; }
+            .hero h1 .stroke-text { -webkit-text-stroke: 1.5px var(--ink); }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-grid"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <a href="#hero" class="nav-logo"><span class="logo-block">JK</span> Jaouad K.</a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#about" onclick="closeNav()">À propos</a></li>
+            <li><a href="#skills" onclick="closeNav()">Compétences</a></li>
+            <li><a href="#projects" onclick="closeNav()">Projets</a></li>
+            <li><a href="#education" onclick="closeNav()">Parcours</a></li>
+            <li><a href="#contact" onclick="closeNav()">Contact</a></li>
+        </ul>
+        <button class="nav-toggle" id="navToggle" onclick="toggleNav()" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <div class="hero-badge"><span class="dot"></span> Disponible en alternance — Sept. 2026</div>
+            <h1><span class="stroke-text">Jaouad</span><br><span class="accent-text">Kabouri</span></h1>
+            <p class="hero-subtitle">Développeur Full-Stack ou futur Data Scientist — j'aime construire des applications qui résolvent des problèmes concrets, du backend temps réel au Deep Learning.</p>
+            <div class="hero-cta">
+                <a href="#projects" class="btn btn-primary">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                    Voir mes projets
+                </a>
+                <a href="https://github.com/BlaackEagle" target="_blank" class="btn btn-outline">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    GitHub
+                </a>
+            </div>
+            <div class="hero-stats">
+                <div class="hero-stat"><div class="number">9+</div><div class="label">Langages</div></div>
+                <div class="hero-stat"><div class="number">5+</div><div class="label">Projets</div></div>
+                <div class="hero-stat"><div class="number">3</div><div class="label">Langues</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bandeau défilant -->
+    <div class="marquee" aria-hidden="true">
+        <div class="marquee-track">
+            <span>Full-Stack <em>&#9679;</em> Deep Learning <em>&#9679;</em> NLP <em>&#9679;</em> Temps réel <em>&#9679;</em> Montpellier <em>&#9679;</em> Alternance Sept. 2026 <em>&#9679;</em></span>
+            <span>Full-Stack <em>&#9679;</em> Deep Learning <em>&#9679;</em> NLP <em>&#9679;</em> Temps réel <em>&#9679;</em> Montpellier <em>&#9679;</em> Alternance Sept. 2026 <em>&#9679;</em></span>
+        </div>
+    </div>
+
+    <!-- About -->
+    <section id="about">
+        <div class="reveal">
+            <div class="section-head"><div class="section-num">01</div><div class="section-title">Qui suis-je ?</div></div>
+        </div>
+        <div class="reveal" style="max-width:800px;">
+            <div class="about-text">
+                <p>Étudiant en <strong>Licence Informatique</strong> à l'Université de Montpellier, avec une solide base en mathématiques (algèbre linéaire, analyse, arithmétique). Mon profil s'oriente vers deux axes complémentaires : le <strong>développement Full-Stack</strong> ou l'<strong>Intelligence Artificielle & Data Science</strong> — deux voies que j'explore activement avant de me spécialiser.</p>
+                <p>Ce qui me motive, c'est de transformer une idée en un produit concret — que ce soit une plateforme de jeux multijoueur en temps réel, un moteur de recherche sémantique utilisant BERT, ou un modèle de classification audio pour les urgences médicales. J'aime apprendre vite et toucher à tout.</p>
+                <p>En septembre 2026, j'intègre un cursus avancé (<strong>MBA Full Stack</strong>, <strong>MBA Big Data</strong> ou <strong>Master IASD</strong>) et je cherche une <strong>alternance</strong> pour mettre mes compétences au service d'une équipe ambitieuse.</p>
+                <div class="about-info-grid">
+                    <div class="about-info-item"><div class="info-label">Localisation</div><div class="info-value">Montpellier, France</div></div>
+                    <div class="about-info-item"><div class="info-label">Permis</div><div class="info-value">B — Véhicule</div></div>
+                    <div class="about-info-item"><div class="info-label">Langues</div><div class="info-value">FR, EN (B2-C1), ES</div></div>
+                    <div class="about-info-item"><div class="info-label">Statut</div><div class="info-value">Alternance Sept. 2026</div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+        <div class="reveal">
+            <div class="section-head"><div class="section-num">02</div><div class="section-title">Mon stack technique</div></div>
+            <p class="section-subtitle">Des langages systèmes aux frameworks modernes, en passant par l'IA et le DevOps.</p>
+        </div>
+        <div class="skills-container reveal">
+            <div class="skill-category" data-index="A">
+                <div class="skill-category-icon">&#x1F4BB;</div>
+                <h3>Langages</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Python</span><span class="skill-tag">JavaScript</span><span class="skill-tag">TypeScript</span>
+                    <span class="skill-tag">Java</span><span class="skill-tag">C</span><span class="skill-tag">SQL</span>
+                    <span class="skill-tag">PHP</span><span class="skill-tag">Rust</span><span class="skill-tag">OCaml</span>
+                </div>
+            </div>
+            <div class="skill-category" data-index="B">
+                <div class="skill-category-icon">&#x2699;&#xFE0F;</div>
+                <h3>Frameworks & Back-End</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Node.js</span><span class="skill-tag">Express</span><span class="skill-tag">React</span>
+                    <span class="skill-tag">Angular</span><span class="skill-tag">Flask</span><span class="skill-tag">Socket.IO</span>
+                </div>
+            </div>
+            <div class="skill-category" data-index="C">
+                <div class="skill-category-icon">&#x1F9E0;</div>
+                <h3>Data & Intelligence Artificielle</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Deep Learning</span><span class="skill-tag">NLP / BERT</span><span class="skill-tag">Embeddings</span>
+                    <span class="skill-tag">Web Scraping</span><span class="skill-tag">Data Analysis</span><span class="skill-tag">Power BI</span>
+                </div>
+            </div>
+            <div class="skill-category" data-index="D">
+                <div class="skill-category-icon">&#x1F6E0;&#xFE0F;</div>
+                <h3>Outils & Infrastructure</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Git / GitHub / GitLab</span><span class="skill-tag">Docker</span>
+                    <span class="skill-tag">MySQL</span><span class="skill-tag">MongoDB</span>
+                    <span class="skill-tag">TCP/IP / SSH / DNS</span><span class="skill-tag">WordPress</span><span class="skill-tag">UML</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+        <div class="reveal">
+            <div class="section-head"><div class="section-num">03</div><div class="section-title">Ce que j'ai construit</div></div>
+            <p class="section-subtitle">Des applications concrètes, du back au front, en passant par l'IA. Cliquez pour en savoir plus.</p>
+        </div>
+        <div class="projects-grid">
+
+            <!-- DeepCV -->
+            <div class="project-card reveal" onclick="openModal('deepcv')">
+                <div class="project-preview">
+                    <img class="preview-img" src="images/deepcv-ui.png" alt="Interface de DeepCV" loading="lazy">
+                    <div class="overlay"><span>Voir le projet</span></div>
+                </div>
+                <div class="project-card-body">
+                    <h3>DeepCV — Moteur de Recherche Sémantique</h3>
+                    <p class="project-short">Application IA qui trie des candidatures par proximité sémantique grâce à BERT. Démo vidéo incluse.</p>
+                    <div class="project-tech"><span>Python</span><span>Flask</span><span>BERT</span><span>NLP</span><span>Deep Learning</span></div>
+                </div>
+            </div>
+
+            <!-- Jeu de Cartes -->
+            <div class="project-card reveal" onclick="openModal('cartes')">
+                <div class="project-preview">
+                    <img class="preview-img" src="images/cartes-jeu.png" alt="Partie de 8 Américain en ligne" loading="lazy">
+                    <div class="overlay"><span>Voir le projet</span></div>
+                </div>
+                <div class="project-card-body">
+                    <h3>8 Américain — Jeu de Cartes Multijoueur</h3>
+                    <p class="project-short">Jeu de cartes en ligne temps réel avec salons, chat intégré et gestion des déconnexions.</p>
+                    <div class="project-tech"><span>Node.js</span><span>React.js</span><span>Socket.IO</span><span>Express</span></div>
+                </div>
+            </div>
+
+            <!-- Mini-Jeux -->
+            <div class="project-card reveal" onclick="openModal('minijeux')">
+                <div class="project-preview">
+                    <div class="preview-minigames">
+                        <div class="game-title">Mot Le Plus Long</div>
+                        <div class="letter-grid">
+                            <div class="letter-tile">B</div><div class="letter-tile">A</div><div class="letter-tile">N</div>
+                            <div class="letter-tile">A</div><div class="letter-tile">N</div><div class="letter-tile">E</div>
+                        </div>
+                        <div class="score-bar"><span>Joueur 1: 42 pts</span><span>Joueur 2: 38 pts</span></div>
+                    </div>
+                    <div class="overlay"><span>Voir le projet</span></div>
+                </div>
+                <div class="project-card-body">
+                    <h3>Plateforme de Mini-Jeux Multijoueur</h3>
+                    <p class="project-short">Suite de 5 jeux de mots interactifs avec communication temps réel et système de scores.</p>
+                    <div class="project-tech"><span>Flask</span><span>Socket.IO</span><span>JavaScript</span><span>WebSockets</span></div>
+                </div>
+            </div>
+
+            <!-- Hex -->
+            <div class="project-card reveal" onclick="openModal('hex')">
+                <div class="project-preview">
+                    <div class="preview-hex">
+                        <div class="hex-grid-preview" id="hexPreview"></div>
+                    </div>
+                    <div class="overlay"><span>Voir le projet</span></div>
+                </div>
+                <div class="project-card-body">
+                    <h3>Jeu de Hex en Ligne</h3>
+                    <p class="project-short">Jeu de stratégie Hex sur plateau 11x11 hexagonal avec spectateurs et chat.</p>
+                    <div class="project-tech"><span>JavaScript</span><span>HTML5</span><span>Node.js</span><span>WebSockets</span></div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Modal -->
+    <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+        <div class="modal" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <div class="modal-header">
+                <h2 id="modalTitle"></h2>
+                <div class="modal-type" id="modalType"></div>
+            </div>
+            <div class="modal-body" id="modalBody"></div>
+        </div>
+    </div>
+
+    <!-- Education -->
+    <section id="education">
+        <div class="reveal">
+            <div class="section-head"><div class="section-num">04</div><div class="section-title">Formation</div></div>
+            <p class="section-subtitle">Un parcours entre informatique, mathématiques et spécialisation IA.</p>
+        </div>
+        <div class="timeline reveal">
+            <div class="timeline-item">
+                <div class="timeline-date">Septembre 2026 (prévu)</div>
+                <h3>MBA Full Stack, MBA Big Data ou Master IASD</h3>
+                <div class="institution">MyDigitalSchool ou Université de Montpellier</div>
+                <p>Trois voies en cours de choix : développement full-stack (MBA), Big Data (MBA) ou spécialisation en Intelligence Artificielle et Science des Données (Master IASD). Recherche d'alternance en cours.</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">2022 — 2026</div>
+                <h3>Licence Informatique</h3>
+                <div class="institution">Université de Montpellier — Faculté des Sciences</div>
+                <p>Algorithmique, Systèmes & Réseaux, IA & NLP, Développement Web & Mobile. Projets pratiques en équipe tout au long du cursus.</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">2021</div>
+                <h3>Licence Mathématiques (modules)</h3>
+                <div class="institution">Université de Montpellier</div>
+                <p>Algèbre linéaire, analyse syntaxique, arithmétique, calculus, géométrie. Fondations solides pour le Machine Learning et la Data Science.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CV Download -->
+    <div class="cv-section" id="cv">
+        <div class="cv-embed reveal">
+            <div class="cv-icon">&#x1F4C4;</div>
+            <h3>Mon CV</h3>
+            <p>Consultez mon CV complet directement ci-dessous, ou ouvrez-le dans un nouvel onglet.</p>
+            <a href="CV_KabouriJaouad.pdf" target="_blank" class="btn btn-primary">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="9" y1="3" x2="9" y2="21"/></svg>
+                Ouvrir le CV
+            </a>
+            <div class="cv-iframe-wrapper" id="cvViewer">
+                <div class="cv-loading">Chargement du CV&hellip;</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact -->
+    <section class="contact-section" id="contact">
+        <div class="reveal">
+            <div class="section-head"><div class="section-num">05</div><div class="section-title">Travaillons ensemble</div></div>
+            <p class="section-subtitle" style="margin: 1rem auto 2rem;">Disponible pour une alternance dès septembre 2026 — n'hésitez pas à me contacter.</p>
+            <div class="contact-links">
+                <a href="mailto:kabourijaouad@gmail.com" class="contact-card">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    <span>kabourijaouad@gmail.com</span>
+                </a>
+                <a href="https://www.linkedin.com/in/jaouad-kabouri-ouzennou-473721232/" target="_blank" class="contact-card">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    <span>LinkedIn</span>
+                </a>
+                <a href="https://github.com/BlaackEagle" target="_blank" class="contact-card">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    <span>GitHub</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer><p>&copy; 2026 Jaouad Kabouri <em>&#9679;</em> Construit avec passion depuis Montpellier</p></footer>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+        <button class="lightbox-nav prev" onclick="event.stopPropagation(); lbNav(-1)">&#8249;</button>
+        <img id="lbImg" src="" alt="Zoom" onclick="event.stopPropagation()" />
+        <button class="lightbox-nav next" onclick="event.stopPropagation(); lbNav(1)">&#8250;</button>
+    </div>
+
+    <script>
+        // ── Navbar ──
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 50));
+        function toggleNav() { document.getElementById('navLinks').classList.toggle('active'); }
+        function closeNav() { document.getElementById('navLinks').classList.remove('active'); }
+
+        // ── Scroll reveal ──
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // ── Active nav link ──
+        const sections = document.querySelectorAll('section[id]');
+        const navLinksAll = document.querySelectorAll('.nav-links a');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(s => { if (window.scrollY >= s.offsetTop - 150) current = s.id; });
+            navLinksAll.forEach(l => l.style.color = l.getAttribute('href') === '#'+current ? 'var(--accent)' : '');
+        });
+
+        // ── Hex preview grid ──
+        const hexPreview = document.getElementById('hexPreview');
+        const blueHexes = [[1,2],[2,3],[3,3],[4,4],[5,5]];
+        const redHexes = [[0,5],[1,5],[2,6],[3,6],[4,5]];
+        for (let r = 0; r < 7; r++) {
+            const row = document.createElement('div');
+            row.className = 'hex-row';
+            row.style.marginLeft = (r * 10) + 'px';
+            for (let c = 0; c < 7; c++) {
+                const cell = document.createElement('div');
+                cell.className = 'hex-cell';
+                if (blueHexes.some(h => h[0]===r && h[1]===c)) cell.classList.add('blue');
+                if (redHexes.some(h => h[0]===r && h[1]===c)) cell.classList.add('red');
+                row.appendChild(cell);
+            }
+            hexPreview.appendChild(row);
+        }
+
+        // ── Project Modals ──
+        const githubSvg = '<svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>';
+
+        const projects = {
+            deepcv: {
+                title: 'DeepCV — Moteur de Recherche Sémantique de CV',
+                type: 'Projet IA & NLP — 2026',
+                video: { src: 'videos/deepcv-demo.mp4', poster: 'videos/deepcv-demo-poster.jpg', caption: 'Démo : upload de CVs, analyse sémantique et classement par pertinence' },
+                images: ['images/deepcv-ui.png', 'images/deepcv-code.png'],
+                body: `
+                    <h4>Contexte</h4>
+                    <p>Projet réalisé dans le cadre de la troisième année de Licence Informatique. L'objectif : automatiser le tri de candidatures en mesurant la proximité sémantique entre une offre de poste et un ensemble de CVs au format PDF.</p>
+                    <h4>Objectifs</h4>
+                    <ul>
+                        <li>Développer un moteur de recherche sémantique capable de classer des CVs par pertinence</li>
+                        <li>Extraire intelligemment le texte de fichiers PDF complexes (mise en page variée)</li>
+                        <li>Vectoriser le texte via des embeddings BERT et mesurer la similarité cosinus</li>
+                        <li>Servir les résultats via une API REST Flask avec une interface web</li>
+                    </ul>
+                    <h4>Approche technique</h4>
+                    <ul>
+                        <li>Modèle <strong>all-MiniLM-L6-v2</strong> (BERT) pour générer des embeddings de phrases</li>
+                        <li>Extraction PDF via <strong>pdfplumber</strong> avec gestion des layouts complexes</li>
+                        <li>Chunking intelligent du texte (mode mots, overlap configurable)</li>
+                        <li>Calcul de similarité cosinus pour le classement des candidatures</li>
+                        <li>Interface web avec drag & drop, barre de progression, affichage des passages pertinents</li>
+                    </ul>
+                    <h4>Stack technique</h4>
+                    <div class="modal-tech"><span>Python</span><span>Flask</span><span>BERT / sentence-transformers</span><span>pdfplumber</span><span>NLP</span><span>Deep Learning</span><span>HTML/CSS/JS</span></div>
+                    <div class="modal-links">
+                        <a href="https://github.com/BlaackEagle/TER2026" target="_blank" class="ml-github">${githubSvg} Voir sur GitHub</a>
+                    </div>`
+            },
+            cartes: {
+                title: '8 Américain — Jeu de Cartes Multijoueur en Ligne',
+                type: 'Projet Full-Stack — 2024',
+                images: ['images/cartes-jeu.png'],
+                body: `
+                    <h4>Contexte</h4>
+                    <p>Application web Full-Stack permettant de jouer au 8 Américain (variante du Crazy Eights) en temps réel avec d'autres joueurs. Projet réalisé dans le cadre d'un cours de développement web.</p>
+                    <h4>Fonctionnalités</h4>
+                    <ul>
+                        <li>Système de <strong>salons (rooms)</strong> pour créer ou rejoindre des parties</li>
+                        <li>Chat en temps réel entre les joueurs pendant la partie</li>
+                        <li>Distribution aléatoire des cartes et arbitrage des tours automatisé</li>
+                        <li>Gestion robuste des déconnexions imprévues (reconnexion, sauvegarde d'état)</li>
+                        <li>Interface visuelle avec cartes animées, indicateur de tour, compteur de cartes</li>
+                    </ul>
+                    <h4>Architecture</h4>
+                    <ul>
+                        <li><strong>Backend</strong> : Node.js + Express pour l'API REST, Socket.IO pour le temps réel</li>
+                        <li><strong>Frontend</strong> : React.js avec gestion d'état pour la logique de jeu côté client</li>
+                        <li>Communication bidirectionnelle via WebSockets pour la synchronisation instantanée</li>
+                    </ul>
+                    <h4>Stack technique</h4>
+                    <div class="modal-tech"><span>Node.js</span><span>React.js</span><span>Socket.IO</span><span>Express</span><span>JavaScript</span><span>CSS3</span></div>`
+            },
+            minijeux: {
+                title: 'Plateforme de Mini-Jeux Multijoueur',
+                type: 'Projet collaboratif — 2025',
+                images: [],
+                body: `
+                    <h4>Contexte</h4>
+                    <p>Projet collaboratif (équipe de 4) comprenant plusieurs jeux de mots interactifs avec communication temps réel entre joueurs.</p>
+                    <h4>Jeux inclus</h4>
+                    <ul>
+                        <li><strong>Mot le plus long</strong> — Former le mot le plus long possible à partir de lettres tirées, avec validation dictionnaire et indice</li>
+                        <li><strong>BananaSolitaire</strong> — Puzzle de placement stratégique de lettres sur une grille avec validation</li>
+                        <li><strong>ChronoBanana</strong> — Jeu de rapidité (2-8 joueurs) avec déplacement de tuiles sur une grille</li>
+                        <li><strong>Le Compte est Bon</strong> — Atteindre un nombre cible avec des opérations mathématiques (+, -, *, /)</li>
+                        <li><strong>BananaSolver</strong> — Générateur de grilles de mots croisés à partir de tirages de lettres</li>
+                    </ul>
+                    <h4>Architecture</h4>
+                    <ul>
+                        <li>Backend modulaire <strong>Flask</strong> avec gestion d'état centralisée</li>
+                        <li>Communication temps réel via <strong>Flask-SocketIO</strong></li>
+                        <li>Persistance des scores et API REST</li>
+                        <li>Interface dynamique avec logique de jeu côté client (timers, animations)</li>
+                    </ul>
+                    <h4>Stack technique</h4>
+                    <div class="modal-tech"><span>Flask</span><span>Flask-SocketIO</span><span>JavaScript</span><span>WebSockets</span><span>HTML5/CSS3</span><span>BeautifulSoup</span></div>
+                    <div class="modal-links">
+                        <a href="https://github.com/BlaackEagle/Projet2025" target="_blank" class="ml-github">${githubSvg} Voir sur GitHub</a>
+                    </div>`
+            },
+            hex: {
+                title: 'Jeu de Hex en Ligne',
+                type: 'Projet Web — 2024',
+                images: [],
+                body: `
+                    <h4>Contexte</h4>
+                    <p>Implémentation web du jeu de stratégie Hex sur un plateau de 11x11 hexagones. Supporte 2 joueurs actifs ainsi que des spectateurs.</p>
+                    <h4>Fonctionnalités</h4>
+                    <ul>
+                        <li>Plateau hexagonal interactif — les joueurs alternent pour colorer des hexagones et relier leurs bords opposés</li>
+                        <li>Gestion des joueurs : inscription par pseudo, maximum 2 joueurs + spectateurs illimités</li>
+                        <li><strong>Chat en temps réel</strong> entre joueurs et spectateurs</li>
+                        <li><strong>Historique des coups</strong> — les spectateurs peuvent naviguer dans la progression du jeu</li>
+                        <li>Notifications d'état : tour actuel, coups invalides, hexagones déjà occupés</li>
+                    </ul>
+                    <h4>Stack technique</h4>
+                    <div class="modal-tech"><span>JavaScript</span><span>HTML5</span><span>CSS3</span><span>Node.js</span><span>WebSockets</span></div>
+                    <div class="modal-links">
+                        <a href="https://github.com/BlaackEagle/ProjetWeb" target="_blank" class="ml-github">${githubSvg} Voir sur GitHub</a>
+                    </div>`
+            }
+        };
+
+        // ── Lightbox state ──
+        let lbImages = [];
+        let lbIndex = 0;
+
+        function openModal(id) {
+            const p = projects[id];
+            if (!p) return;
+            document.getElementById('modalTitle').textContent = p.title;
+            document.getElementById('modalType').textContent = p.type;
+            let mediaHtml = '';
+            // Vidéo de démo en tête de modale si disponible
+            if (p.video) {
+                mediaHtml += `<div class="modal-video">
+                    <video controls preload="none" poster="${p.video.poster || ''}" playsinline>
+                        <source src="${p.video.src}" type="video/mp4">
+                        Votre navigateur ne supporte pas la lecture de vidéos.
+                    </video>
+                    ${p.video.caption ? `<div class="video-caption">&#9654; ${p.video.caption}</div>` : ''}
+                </div>`;
+            }
+            if (p.images && p.images.length > 0) {
+                mediaHtml += '<div class="modal-gallery">';
+                p.images.forEach((src, i) => {
+                    mediaHtml += `<img src="${src}" alt="Capture d'écran ${i+1}" loading="lazy" onclick="openLightbox('${id}', ${i})" onerror="this.style.display='none'" />`;
+                });
+                mediaHtml += '</div>';
+            }
+            document.getElementById('modalBody').innerHTML = mediaHtml + p.body;
+            const overlay = document.getElementById('modalOverlay');
+            overlay.style.display = 'flex';
+            requestAnimationFrame(() => overlay.classList.add('active'));
+            document.body.style.overflow = 'hidden';
+        }
+        function closeModal(e) {
+            if (e && e.target !== document.getElementById('modalOverlay') && e.target !== document.querySelector('.modal-close')) return;
+            const overlay = document.getElementById('modalOverlay');
+            // Stoppe la vidéo si elle est en cours de lecture
+            overlay.querySelectorAll('video').forEach(v => v.pause());
+            overlay.classList.remove('active');
+            setTimeout(() => { overlay.style.display = 'none'; }, 300);
+            document.body.style.overflow = '';
+        }
+        function openLightbox(projectId, index) {
+            lbImages = projects[projectId].images || [];
+            lbIndex = index;
+            const lb = document.getElementById('lightbox');
+            document.getElementById('lbImg').src = lbImages[lbIndex];
+            lb.classList.add('active');
+            document.querySelector('.lightbox-nav.prev').style.display = lbImages.length > 1 ? 'block' : 'none';
+            document.querySelector('.lightbox-nav.next').style.display = lbImages.length > 1 ? 'block' : 'none';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+        }
+        function lbNav(dir) {
+            if (!lbImages.length) return;
+            lbIndex = (lbIndex + dir + lbImages.length) % lbImages.length;
+            document.getElementById('lbImg').src = lbImages[lbIndex];
+        }
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') { closeLightbox(); closeModal(); }
+            if (document.getElementById('lightbox').classList.contains('active')) {
+                if (e.key === 'ArrowLeft') lbNav(-1);
+                if (e.key === 'ArrowRight') lbNav(1);
+            }
+        });
+
+        // ── CV : rendu PDF responsive via PDF.js (les iframes PDF ne marchent pas sur mobile) ──
+        const cvViewer = document.getElementById('cvViewer');
+        const CV_FILE = 'CV_KabouriJaouad.pdf';
+        let cvStarted = false;
+        const cvObserver = new IntersectionObserver(entries => {
+            if (entries.some(en => en.isIntersecting) && !cvStarted) {
+                cvStarted = true;
+                cvObserver.disconnect();
+                const s = document.createElement('script');
+                s.src = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js';
+                s.onload = renderCv;
+                s.onerror = cvFallback;
+                document.head.appendChild(s);
+            }
+        }, { rootMargin: '600px' });
+        cvObserver.observe(cvViewer);
+
+        async function renderCv() {
+            try {
+                pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+                const pdf = await pdfjsLib.getDocument(CV_FILE).promise;
+                const width = cvViewer.clientWidth || 800;
+                const dpr = Math.min(window.devicePixelRatio || 1, 2);
+                cvViewer.innerHTML = '';
+                for (let i = 1; i <= pdf.numPages; i++) {
+                    const page = await pdf.getPage(i);
+                    const base = page.getViewport({ scale: 1 });
+                    const viewport = page.getViewport({ scale: (width / base.width) * dpr });
+                    const canvas = document.createElement('canvas');
+                    canvas.width = viewport.width;
+                    canvas.height = viewport.height;
+                    cvViewer.appendChild(canvas);
+                    await page.render({ canvasContext: canvas.getContext('2d'), viewport }).promise;
+                }
+            } catch (err) {
+                cvFallback();
+            }
+        }
+        function cvFallback() {
+            cvViewer.innerHTML = '<iframe src="' + CV_FILE + '" title="CV Jaouad Kabouri"></iframe>';
+        }
+    </script>
+</body>
+</html>
