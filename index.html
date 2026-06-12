@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jaouad Kabouri — Portfolio</title>
-    <meta name="description" content="Jaouad Kabouri — Développeur Full-Stack & IA à Montpellier. Découvrez mes projets, compétences et parcours.">
-    <meta name="theme-color" content="#f1e9d6">
+    <title>Jaouad Kabouri | Portfolio</title>
+    <meta name="description" content="Jaouad Kabouri, développeur Full-Stack & IA à Montpellier. Découvrez mes projets, compétences et parcours.">
+    <meta name="theme-color" content="#15161a">
     <link rel="canonical" href="https://jaouadkabouri.dev/">
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='14' fill='%232b6049'/%3E%3Ctext x='50' y='70' font-size='50' font-family='Arial,sans-serif' font-weight='900' fill='%23f1e9d6' text-anchor='middle'%3EJK%3C/text%3E%3C/svg%3E">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='14' fill='%2315161a'/%3E%3Ctext x='50' y='70' font-size='50' font-family='Arial,sans-serif' font-weight='900' fill='%23f5c518' text-anchor='middle'%3EJK%3C/text%3E%3C/svg%3E">
 
     <!-- Open Graph / LinkedIn Preview -->
-    <meta property="og:title" content="Jaouad Kabouri — Portfolio" />
-    <meta property="og:description" content="Développeur Full-Stack & IA — Découvrez mes projets, compétences et parcours." />
+    <meta property="og:title" content="Jaouad Kabouri | Portfolio" />
+    <meta property="og:description" content="Développeur Full-Stack & IA. Découvrez mes projets, compétences et parcours." />
     <meta property="og:image" content="https://jaouadkabouri.dev/images/og-preview.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
@@ -23,17 +23,17 @@
     <style>
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
-            --paper: #f1e9d6;
-            --paper-soft: #e7dcc1;
-            --ink: #2a2418;
-            --ink-soft: #5c5240;
-            --ink-faint: #94896f;
-            --accent: #2b6049;
-            --accent-soft: rgba(43, 96, 73, 0.08);
-            --pop: #c4502e;
-            --line: #2a2418;
-            --shadow-hard: 6px 6px 0 var(--ink);
-            --shadow-hard-sm: 4px 4px 0 var(--ink);
+            --paper: #15161a;
+            --paper-soft: #1d1f25;
+            --ink: #f3f3ef;
+            --ink-soft: #a4a59f;
+            --ink-faint: #6c6e6a;
+            --accent: #f5c518;
+            --accent-soft: rgba(245, 197, 24, 0.10);
+            --pop: #2bd4d4;
+            --line: #2f323a;
+            --shadow-hard: 0 18px 44px rgba(0, 0, 0, 0.5);
+            --shadow-hard-sm: 0 6px 18px rgba(0, 0, 0, 0.38);
             --font-main: 'Inter', -apple-system, sans-serif;
             --font-display: 'Syne', sans-serif;
             --font-mono: 'Space Mono', monospace;
@@ -47,8 +47,8 @@
         .bg-grid {
             position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.45;
             background-image:
-                linear-gradient(rgba(42,36,24,0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(42,36,24,0.05) 1px, transparent 1px);
+                linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
             background-size: 48px 48px;
         }
 
@@ -56,7 +56,7 @@
         .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 1rem 2rem; background: var(--paper); border-bottom: 2px solid var(--line); display: flex; justify-content: space-between; align-items: center; transition: padding 0.3s; }
         .navbar.scrolled { padding: 0.6rem 2rem; }
         .nav-logo { font-family: var(--font-display); font-weight: 800; font-size: 1.3rem; letter-spacing: -0.5px; color: var(--ink); display: inline-flex; align-items: center; gap: 10px; }
-        .nav-logo .logo-block { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; background: var(--accent); color: var(--paper); font-size: 0.85rem; border: 2px solid var(--ink); box-shadow: 3px 3px 0 var(--ink); }
+        .nav-logo .logo-block { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; background: var(--accent); color: var(--paper); font-size: 0.85rem; border: none; box-shadow: 0 2px 10px rgba(245,197,24,0.25); }
         .nav-links { display: flex; gap: 1.8rem; list-style: none; }
         .nav-links a { font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--ink-soft); transition: color 0.2s; position: relative; }
         .nav-links a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 3px; background: var(--pop); transition: width 0.25s; }
@@ -67,7 +67,7 @@
 
         /* ── Hero ── */
         .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; position: relative; z-index: 2; padding: 8rem 2rem 6rem; max-width: 1180px; margin: 0 auto; }
-        .hero-badge { display: inline-flex; align-items: center; gap: 10px; padding: 8px 16px; background: var(--paper); border: 2px solid var(--line); box-shadow: var(--shadow-hard-sm); font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; width: fit-content; margin-bottom: 2.5rem; animation: fadeInUp 0.7s ease-out; }
+        .hero-badge { display: inline-flex; align-items: center; gap: 10px; padding: 8px 16px; background: var(--paper-soft); border: 2px solid var(--line); box-shadow: var(--shadow-hard-sm); font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; width: fit-content; margin-bottom: 2.5rem; animation: fadeInUp 0.7s ease-out; }
         .hero-badge .dot { width: 9px; height: 9px; background: var(--pop); animation: pulse 2s infinite; }
         @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.25} }
         .hero h1 { font-family: var(--font-display); font-size: clamp(3.2rem, 11vw, 8rem); font-weight: 800; line-height: 0.95; letter-spacing: -2px; text-transform: uppercase; margin-bottom: 2rem; animation: fadeInUp 0.7s ease-out 0.1s both; }
@@ -76,12 +76,12 @@
         .hero-subtitle { font-size: clamp(1rem, 2vw, 1.2rem); color: var(--ink-soft); max-width: 620px; margin-bottom: 2.8rem; line-height: 1.8; border-left: 4px solid var(--pop); padding-left: 1.2rem; animation: fadeInUp 0.7s ease-out 0.2s both; }
         .hero-cta { display: flex; gap: 1.2rem; flex-wrap: wrap; animation: fadeInUp 0.7s ease-out 0.3s both; }
         .btn { padding: 14px 28px; font-family: var(--font-mono); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; border: 2px solid var(--line); display: inline-flex; align-items: center; gap: 10px; transition: transform 0.15s, box-shadow 0.15s, background 0.15s, color 0.15s; box-shadow: var(--shadow-hard-sm); }
-        .btn:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--ink); }
-        .btn:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--ink); }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(0,0,0,0.4); }
+        .btn:active { transform: translateY(0); box-shadow: 0 3px 10px rgba(0,0,0,0.35); }
         .btn-primary { background: var(--accent); color: var(--paper); }
         .btn-outline { background: var(--paper); color: var(--ink); }
-        .btn-outline:hover { background: var(--pop); color: var(--paper); }
-        .hero-stats { display: flex; gap: 0; margin-top: 4.5rem; width: fit-content; border: 2px solid var(--line); box-shadow: var(--shadow-hard); background: var(--paper); animation: fadeInUp 0.7s ease-out 0.4s both; }
+        .btn-outline:hover { background: var(--pop); color: var(--paper); border-color: var(--pop); }
+        .hero-stats { display: flex; gap: 0; margin-top: 4.5rem; width: fit-content; border: 2px solid var(--line); box-shadow: var(--shadow-hard); background: var(--paper-soft); animation: fadeInUp 0.7s ease-out 0.4s both; }
         .hero-stat { padding: 1.2rem 2.2rem; border-right: 2px solid var(--line); }
         .hero-stat:last-child { border-right: none; }
         .hero-stat .number { font-family: var(--font-display); font-size: 2.2rem; font-weight: 800; color: var(--accent); line-height: 1.1; }
@@ -89,10 +89,10 @@
         @keyframes fadeInUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
 
         /* ── Bandeau défilant ── */
-        .marquee { background: var(--ink); color: var(--paper); border-top: 2px solid var(--line); border-bottom: 2px solid var(--line); overflow: hidden; padding: 0.85rem 0; position: relative; z-index: 2; }
+        .marquee { background: var(--accent); color: var(--paper); border-top: 2px solid var(--line); border-bottom: 2px solid var(--line); overflow: hidden; padding: 0.85rem 0; position: relative; z-index: 2; }
         .marquee-track { display: flex; width: max-content; animation: marquee 22s linear infinite; }
         .marquee span { font-family: var(--font-mono); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; padding: 0 1.4rem; white-space: nowrap; }
-        .marquee span em { font-style: normal; color: var(--pop); }
+        .marquee span em { font-style: normal; color: var(--paper); opacity: 0.55; }
         @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
         /* ── Sections ── */
@@ -106,8 +106,8 @@
 
         /* ── About ── */
         .about-text p { color: var(--ink-soft); margin-bottom: 1.5rem; font-size: 1.02rem; }
-        .about-text p strong { color: var(--ink); font-weight: 700; background: linear-gradient(transparent 65%, rgba(196,80,46,0.28) 65%); }
-        .about-info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-top: 2.4rem; border: 2px solid var(--line); box-shadow: var(--shadow-hard); background: var(--paper); }
+        .about-text p strong { color: var(--ink); font-weight: 700; box-shadow: inset 0 -0.5em 0 rgba(245,197,24,0.22); }
+        .about-info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-top: 2.4rem; border: 2px solid var(--line); box-shadow: var(--shadow-hard); background: var(--paper-soft); }
         .about-info-item { padding: 1.1rem 1.4rem; border-bottom: 2px solid var(--line); }
         .about-info-item:nth-child(odd) { border-right: 2px solid var(--line); }
         .about-info-item:nth-last-child(-n+2) { border-bottom: none; }
@@ -116,8 +116,8 @@
 
         /* ── Skills ── */
         .skills-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1.8rem; }
-        .skill-category { background: var(--paper); border: 2px solid var(--line); padding: 2rem; transition: transform 0.2s, box-shadow 0.2s; box-shadow: var(--shadow-hard-sm); position: relative; }
-        .skill-category:hover { transform: translate(-3px, -3px); box-shadow: 8px 8px 0 var(--ink); }
+        .skill-category { background: var(--paper-soft); border: 2px solid var(--line); padding: 2rem; transition: transform 0.2s, box-shadow 0.2s; box-shadow: var(--shadow-hard-sm); position: relative; }
+        .skill-category:hover { transform: translateY(-4px); box-shadow: 0 14px 34px rgba(0,0,0,0.45); border-color: var(--accent); }
         .skill-category::before { content: attr(data-index); position: absolute; top: -2px; right: -2px; font-family: var(--font-mono); font-size: 0.7rem; font-weight: 700; background: var(--ink); color: var(--paper); padding: 4px 10px; }
         .skill-category-icon { font-size: 1.6rem; margin-bottom: 1rem; }
         .skill-category h3 { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 1.2rem; }
@@ -128,12 +128,12 @@
         /* ── Projects Grid ── */
         .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1.8rem; }
         .project-card {
-            background: var(--paper); border: 2px solid var(--line);
+            background: var(--paper-soft); border: 2px solid var(--line);
             overflow: hidden; cursor: pointer; position: relative;
             transition: transform 0.2s, box-shadow 0.2s;
             box-shadow: var(--shadow-hard-sm);
         }
-        .project-card:hover { transform: translate(-4px, -4px); box-shadow: 10px 10px 0 var(--ink); }
+        .project-card:hover { transform: translateY(-5px); box-shadow: 0 18px 42px rgba(0,0,0,0.5); border-color: var(--accent); }
 
         .project-preview {
             height: 200px; position: relative; overflow: hidden;
@@ -143,18 +143,18 @@
         .project-preview > img.preview-img { width: 100%; height: 100%; object-fit: cover; object-position: top; transition: transform 0.5s; filter: saturate(0.9); }
         .project-card:hover .preview-img { transform: scale(1.04); }
         .project-preview .overlay {
-            position: absolute; inset: 0; background: rgba(43,96,73,0);
+            position: absolute; inset: 0; background: rgba(21,22,26,0);
             display: flex; align-items: center; justify-content: center;
             transition: all 0.25s; z-index: 2;
         }
         .project-preview .overlay span {
             opacity: 0; transform: translateY(8px);
-            background: var(--paper); color: var(--ink); border: 2px solid var(--line);
+            background: var(--accent); color: var(--paper); border: none;
             box-shadow: var(--shadow-hard-sm); padding: 9px 20px;
             font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700;
             text-transform: uppercase; letter-spacing: 1px; transition: all 0.25s;
         }
-        .project-card:hover .overlay { background: rgba(43,96,73,0.5); }
+        .project-card:hover .overlay { background: rgba(21,22,26,0.6); }
         .project-card:hover .overlay span { opacity: 1; transform: translateY(0); }
 
         /* Aperçus CSS pour les projets sans capture d'écran */
@@ -164,10 +164,10 @@
         }
         .preview-minigames .game-title { color: var(--ink); font-family: var(--font-display); font-weight: 800; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.5px; }
         .preview-minigames .letter-grid { display: flex; gap: 6px; }
-        .preview-minigames .letter-tile { width: 36px; height: 36px; background: var(--accent); color: var(--paper); font-weight: 800; font-size: 0.95rem; display: flex; align-items: center; justify-content: center; border: 2px solid var(--ink); box-shadow: 3px 3px 0 var(--ink); }
+        .preview-minigames .letter-tile { width: 36px; height: 36px; background: var(--accent); color: var(--paper); font-weight: 800; font-size: 0.95rem; display: flex; align-items: center; justify-content: center; border: none; box-shadow: 0 3px 10px rgba(0,0,0,0.4); }
         .preview-minigames .letter-tile:nth-child(3) { background: var(--pop); }
         .preview-minigames .score-bar { display: flex; gap: 12px; font-size: 0.62rem; font-family: var(--font-mono); font-weight: 700; color: var(--ink-soft); }
-        .preview-minigames .score-bar span { background: var(--paper); border: 1.5px solid var(--ink); padding: 4px 10px; }
+        .preview-minigames .score-bar span { background: var(--paper); border: 1.5px solid var(--line); padding: 4px 10px; }
 
         .preview-hex {
             background: var(--paper-soft);
@@ -175,7 +175,7 @@
         }
         .hex-grid-preview { display: flex; flex-direction: column; align-items: center; gap: 2px; }
         .hex-row { display: flex; gap: 3px; }
-        .hex-cell { width: 18px; height: 18px; clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); background: rgba(42,36,24,0.12); }
+        .hex-cell { width: 18px; height: 18px; clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); background: rgba(255,255,255,0.09); }
         .hex-cell.blue { background: var(--accent); }
         .hex-cell.red { background: var(--pop); }
 
@@ -187,13 +187,13 @@
 
         /* ── Project Modal ── */
         .modal-overlay {
-            position: fixed; inset: 0; background: rgba(42,36,24,0.55);
+            position: fixed; inset: 0; background: rgba(0,0,0,0.72); backdrop-filter: blur(4px);
             z-index: 2000; display: none; align-items: center; justify-content: center;
             padding: 2rem; opacity: 0; transition: opacity 0.3s;
         }
         .modal-overlay.active { display: flex; opacity: 1; }
         .modal {
-            background: var(--paper); border: 2px solid var(--line); box-shadow: 10px 10px 0 var(--ink);
+            background: var(--paper-soft); border: 2px solid var(--line); box-shadow: 0 30px 70px rgba(0,0,0,0.65);
             max-width: 780px; width: 100%; max-height: 85vh; overflow-y: auto;
             transform: translateY(20px); transition: transform 0.3s;
             scrollbar-width: thin; scrollbar-color: var(--accent) transparent;
@@ -207,7 +207,7 @@
             width: 38px; height: 38px;
             background: var(--paper); border: 2px solid var(--line); color: var(--ink);
             font-size: 1.2rem; font-weight: 700; cursor: pointer; transition: all 0.2s; z-index: 10;
-            box-shadow: 3px 3px 0 var(--ink);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.4);
         }
         .modal-close:hover { background: var(--pop); color: var(--paper); }
 
@@ -228,7 +228,7 @@
         .modal-links { display: flex; gap: 12px; margin-top: 1.6rem; padding-top: 1.5rem; border-top: 2px solid var(--line); }
         .modal-links a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; transition: all 0.18s; }
         .modal-links .ml-github { background: var(--ink); color: var(--paper); border: 2px solid var(--line); box-shadow: var(--shadow-hard-sm); }
-        .modal-links .ml-github:hover { background: var(--accent); transform: translate(-2px,-2px); box-shadow: 6px 6px 0 var(--ink); }
+        .modal-links .ml-github:hover { background: var(--accent); color: var(--paper); border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 10px 24px rgba(0,0,0,0.4); }
         .modal-links .ml-github svg { width: 18px; height: 18px; }
 
         /* ── Vidéo de démo dans la modale ── */
@@ -251,7 +251,7 @@
 
         /* Lightbox */
         .lightbox {
-            position: fixed; inset: 0; background: rgba(42,36,24,0.92); z-index: 3000;
+            position: fixed; inset: 0; background: rgba(0,0,0,0.93); z-index: 3000;
             display: none; align-items: center; justify-content: center; cursor: zoom-out;
         }
         .lightbox.active { display: flex; }
@@ -275,7 +275,7 @@
         .timeline { position: relative; padding-left: 3rem; }
         .timeline::before { content: ''; position: absolute; left: 9px; top: 6px; bottom: 0; width: 2px; background: var(--ink); }
         .timeline-item { position: relative; margin-bottom: 3rem; }
-        .timeline-item::before { content: ''; position: absolute; left: -2.68rem; top: 6px; width: 14px; height: 14px; background: var(--pop); border: 2px solid var(--ink); }
+        .timeline-item::before { content: ''; position: absolute; left: -2.68rem; top: 6px; width: 14px; height: 14px; background: var(--pop); border: 2px solid var(--paper); box-shadow: 0 0 0 1px var(--line); }
         .timeline-date { font-family: var(--font-mono); font-size: 0.74rem; font-weight: 700; color: var(--paper); background: var(--ink); display: inline-block; padding: 2px 10px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.6rem; }
         .timeline-item h3 { font-family: var(--font-display); font-size: 1.15rem; font-weight: 700; margin-bottom: 0.3rem; }
         .timeline-item .institution { color: var(--accent); font-weight: 600; font-size: 0.9rem; margin-bottom: 0.5rem; }
@@ -287,7 +287,7 @@
             max-width: 800px; margin: 0 auto;
         }
         .cv-embed {
-            background: var(--paper); border: 2px solid var(--line); box-shadow: var(--shadow-hard);
+            background: var(--paper-soft); border: 2px solid var(--line); box-shadow: var(--shadow-hard);
             padding: 2.5rem; display: flex; flex-direction: column; align-items: center; gap: 1.5rem;
         }
         .cv-icon { font-size: 2.6rem; }
@@ -306,14 +306,14 @@
         .contact-section { text-align: center; padding: 6rem 2rem 5rem; position: relative; z-index: 2; max-width: 800px; margin: 0 auto; }
         .contact-section .section-head { justify-content: center; }
         .contact-links { display: flex; justify-content: center; gap: 1.2rem; flex-wrap: wrap; margin-top: 2rem; }
-        .contact-card { display: flex; align-items: center; gap: 12px; padding: 1rem 1.5rem; background: var(--paper); border: 2px solid var(--line); box-shadow: var(--shadow-hard-sm); transition: all 0.18s; cursor: pointer; }
-        .contact-card:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 var(--ink); background: var(--accent); color: var(--paper); }
+        .contact-card { display: flex; align-items: center; gap: 12px; padding: 1rem 1.5rem; background: var(--paper-soft); border: 2px solid var(--line); box-shadow: var(--shadow-hard-sm); transition: all 0.18s; cursor: pointer; }
+        .contact-card:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(0,0,0,0.45); background: var(--accent); color: var(--paper); border-color: var(--accent); }
         .contact-card:hover svg { color: var(--paper); }
         .contact-card svg { width: 20px; height: 20px; color: var(--accent); transition: color 0.18s; }
         .contact-card span { font-weight: 600; font-size: 0.9rem; }
 
         /* ── Footer ── */
-        footer { text-align: center; padding: 2rem; background: var(--ink); color: var(--paper-soft); font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; position: relative; z-index: 2; border-top: 2px solid var(--line); }
+        footer { text-align: center; padding: 2rem; background: var(--paper-soft); color: var(--ink-soft); font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; position: relative; z-index: 2; border-top: 2px solid var(--line); }
         footer em { font-style: normal; color: var(--pop); }
 
         /* ── Responsive ── */
@@ -362,9 +362,9 @@
     <!-- Hero -->
     <section class="hero" id="hero">
         <div class="hero-content">
-            <div class="hero-badge"><span class="dot"></span> Disponible en alternance — Sept. 2026</div>
+            <div class="hero-badge"><span class="dot"></span> Disponible en alternance dès sept. 2026</div>
             <h1><span class="stroke-text">Jaouad</span><br><span class="accent-text">Kabouri</span></h1>
-            <p class="hero-subtitle">Développeur Full-Stack ou futur Data Scientist — j'aime construire des applications qui résolvent des problèmes concrets, du backend temps réel au Deep Learning.</p>
+            <p class="hero-subtitle">Développeur Full-Stack ou futur Data Scientist. J'aime construire des applications qui résolvent des problèmes concrets, du backend temps réel au Deep Learning.</p>
             <div class="hero-cta">
                 <a href="#projects" class="btn btn-primary">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
@@ -398,12 +398,12 @@
         </div>
         <div class="reveal" style="max-width:800px;">
             <div class="about-text">
-                <p>Étudiant en <strong>Licence Informatique</strong> à l'Université de Montpellier, avec une solide base en mathématiques (algèbre linéaire, analyse, arithmétique). Mon profil s'oriente vers deux axes complémentaires : le <strong>développement Full-Stack</strong> ou l'<strong>Intelligence Artificielle & Data Science</strong> — deux voies que j'explore activement avant de me spécialiser.</p>
-                <p>Ce qui me motive, c'est de transformer une idée en un produit concret — que ce soit une plateforme de jeux multijoueur en temps réel, un moteur de recherche sémantique utilisant BERT, ou un modèle de classification audio pour les urgences médicales. J'aime apprendre vite et toucher à tout.</p>
+                <p>Étudiant en <strong>Licence Informatique</strong> à l'Université de Montpellier, avec une solide base en mathématiques (algèbre linéaire, analyse, arithmétique). Mon profil s'oriente vers deux axes complémentaires : le <strong>développement Full-Stack</strong> ou l'<strong>Intelligence Artificielle & Data Science</strong>, deux voies que j'explore activement avant de me spécialiser.</p>
+                <p>Ce qui me motive, c'est de transformer une idée en un produit concret, que ce soit une plateforme de jeux multijoueur en temps réel, un moteur de recherche sémantique utilisant BERT, ou un modèle de classification audio pour les urgences médicales. J'aime apprendre vite et toucher à tout.</p>
                 <p>En septembre 2026, j'intègre un cursus avancé (<strong>MBA Full Stack</strong>, <strong>MBA Big Data</strong> ou <strong>Master IASD</strong>) et je cherche une <strong>alternance</strong> pour mettre mes compétences au service d'une équipe ambitieuse.</p>
                 <div class="about-info-grid">
                     <div class="about-info-item"><div class="info-label">Localisation</div><div class="info-value">Montpellier, France</div></div>
-                    <div class="about-info-item"><div class="info-label">Permis</div><div class="info-value">B — Véhicule</div></div>
+                    <div class="about-info-item"><div class="info-label">Permis</div><div class="info-value">B (véhicule)</div></div>
                     <div class="about-info-item"><div class="info-label">Langues</div><div class="info-value">FR, EN (B2-C1), ES</div></div>
                     <div class="about-info-item"><div class="info-label">Statut</div><div class="info-value">Alternance Sept. 2026</div></div>
                 </div>
@@ -470,7 +470,7 @@
                     <div class="overlay"><span>Voir le projet</span></div>
                 </div>
                 <div class="project-card-body">
-                    <h3>DeepCV — Moteur de Recherche Sémantique</h3>
+                    <h3>DeepCV : moteur de recherche sémantique</h3>
                     <p class="project-short">Application IA qui trie des candidatures par proximité sémantique grâce à BERT. Démo vidéo incluse.</p>
                     <div class="project-tech"><span>Python</span><span>Flask</span><span>BERT</span><span>NLP</span><span>Deep Learning</span></div>
                 </div>
@@ -483,7 +483,7 @@
                     <div class="overlay"><span>Voir le projet</span></div>
                 </div>
                 <div class="project-card-body">
-                    <h3>8 Américain — Jeu de Cartes Multijoueur</h3>
+                    <h3>8 Américain : jeu de cartes multijoueur</h3>
                     <p class="project-short">Jeu de cartes en ligne temps réel avec salons, chat intégré et gestion des déconnexions.</p>
                     <div class="project-tech"><span>Node.js</span><span>React.js</span><span>Socket.IO</span><span>Express</span></div>
                 </div>
@@ -553,9 +553,9 @@
                 <p>Trois voies en cours de choix : développement full-stack (MBA), Big Data (MBA) ou spécialisation en Intelligence Artificielle et Science des Données (Master IASD). Recherche d'alternance en cours.</p>
             </div>
             <div class="timeline-item">
-                <div class="timeline-date">2022 — 2026</div>
+                <div class="timeline-date">2022 à 2026</div>
                 <h3>Licence Informatique</h3>
-                <div class="institution">Université de Montpellier — Faculté des Sciences</div>
+                <div class="institution">Université de Montpellier, Faculté des Sciences</div>
                 <p>Algorithmique, Systèmes & Réseaux, IA & NLP, Développement Web & Mobile. Projets pratiques en équipe tout au long du cursus.</p>
             </div>
             <div class="timeline-item">
@@ -587,7 +587,7 @@
     <section class="contact-section" id="contact">
         <div class="reveal">
             <div class="section-head"><div class="section-num">05</div><div class="section-title">Travaillons ensemble</div></div>
-            <p class="section-subtitle" style="margin: 1rem auto 2rem;">Disponible pour une alternance dès septembre 2026 — n'hésitez pas à me contacter.</p>
+            <p class="section-subtitle" style="margin: 1rem auto 2rem;">Disponible pour une alternance dès septembre 2026, n'hésitez pas à me contacter.</p>
             <div class="contact-links">
                 <a href="mailto:kabourijaouad@gmail.com" class="contact-card">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
@@ -660,8 +660,8 @@
 
         const projects = {
             deepcv: {
-                title: 'DeepCV — Moteur de Recherche Sémantique de CV',
-                type: 'Projet IA & NLP — 2026',
+                title: 'DeepCV : moteur de recherche sémantique de CV',
+                type: 'Projet IA & NLP · 2026',
                 video: { src: 'videos/deepcv-demo.mp4', poster: 'videos/deepcv-demo-poster.jpg', caption: 'Démo : upload de CVs, analyse sémantique et classement par pertinence' },
                 images: ['images/deepcv-ui.png', 'images/deepcv-code.png'],
                 body: `
@@ -689,8 +689,8 @@
                     </div>`
             },
             cartes: {
-                title: '8 Américain — Jeu de Cartes Multijoueur en Ligne',
-                type: 'Projet Full-Stack — 2024',
+                title: '8 Américain : jeu de cartes multijoueur en ligne',
+                type: 'Projet Full-Stack · 2024',
                 images: ['images/cartes-jeu.png'],
                 body: `
                     <h4>Contexte</h4>
@@ -714,18 +714,18 @@
             },
             minijeux: {
                 title: 'Plateforme de Mini-Jeux Multijoueur',
-                type: 'Projet collaboratif — 2025',
+                type: 'Projet collaboratif · 2025',
                 images: [],
                 body: `
                     <h4>Contexte</h4>
                     <p>Projet collaboratif (équipe de 4) comprenant plusieurs jeux de mots interactifs avec communication temps réel entre joueurs.</p>
                     <h4>Jeux inclus</h4>
                     <ul>
-                        <li><strong>Mot le plus long</strong> — Former le mot le plus long possible à partir de lettres tirées, avec validation dictionnaire et indice</li>
-                        <li><strong>BananaSolitaire</strong> — Puzzle de placement stratégique de lettres sur une grille avec validation</li>
-                        <li><strong>ChronoBanana</strong> — Jeu de rapidité (2-8 joueurs) avec déplacement de tuiles sur une grille</li>
-                        <li><strong>Le Compte est Bon</strong> — Atteindre un nombre cible avec des opérations mathématiques (+, -, *, /)</li>
-                        <li><strong>BananaSolver</strong> — Générateur de grilles de mots croisés à partir de tirages de lettres</li>
+                        <li><strong>Mot le plus long</strong> : former le mot le plus long possible à partir de lettres tirées, avec validation dictionnaire et indice</li>
+                        <li><strong>BananaSolitaire</strong> : puzzle de placement stratégique de lettres sur une grille avec validation</li>
+                        <li><strong>ChronoBanana</strong> : jeu de rapidité (2 à 8 joueurs) avec déplacement de tuiles sur une grille</li>
+                        <li><strong>Le Compte est Bon</strong> : atteindre un nombre cible avec des opérations mathématiques (+, -, *, /)</li>
+                        <li><strong>BananaSolver</strong> : générateur de grilles de mots croisés à partir de tirages de lettres</li>
                     </ul>
                     <h4>Architecture</h4>
                     <ul>
@@ -742,17 +742,17 @@
             },
             hex: {
                 title: 'Jeu de Hex en Ligne',
-                type: 'Projet Web — 2024',
+                type: 'Projet Web · 2024',
                 images: [],
                 body: `
                     <h4>Contexte</h4>
                     <p>Implémentation web du jeu de stratégie Hex sur un plateau de 11x11 hexagones. Supporte 2 joueurs actifs ainsi que des spectateurs.</p>
                     <h4>Fonctionnalités</h4>
                     <ul>
-                        <li>Plateau hexagonal interactif — les joueurs alternent pour colorer des hexagones et relier leurs bords opposés</li>
+                        <li>Plateau hexagonal interactif : les joueurs alternent pour colorer des hexagones et relier leurs bords opposés</li>
                         <li>Gestion des joueurs : inscription par pseudo, maximum 2 joueurs + spectateurs illimités</li>
                         <li><strong>Chat en temps réel</strong> entre joueurs et spectateurs</li>
-                        <li><strong>Historique des coups</strong> — les spectateurs peuvent naviguer dans la progression du jeu</li>
+                        <li><strong>Historique des coups</strong> : les spectateurs peuvent naviguer dans la progression du jeu</li>
                         <li>Notifications d'état : tour actuel, coups invalides, hexagones déjà occupés</li>
                     </ul>
                     <h4>Stack technique</h4>
