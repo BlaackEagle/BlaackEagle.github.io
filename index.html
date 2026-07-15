@@ -795,6 +795,8 @@
             overlay.style.display = 'flex';
             requestAnimationFrame(() => overlay.classList.add('active'));
             document.body.style.overflow = 'hidden';
+            // Lien direct partageable (ex. .../#deepcv ouvre ce projet)
+            if (location.hash !== '#' + id) history.replaceState(null, '', '#' + id);
         }
         function closeModal(e) {
             if (e && e.target !== document.getElementById('modalOverlay') && e.target !== document.querySelector('.modal-close')) return;
@@ -804,6 +806,8 @@
             overlay.classList.remove('active');
             setTimeout(() => { overlay.style.display = 'none'; }, 300);
             document.body.style.overflow = '';
+            // Retire l'ancre projet de l'URL
+            if (projects[location.hash.slice(1)]) history.replaceState(null, '', location.pathname + location.search);
         }
         function openLightbox(projectId, index) {
             lbImages = projects[projectId].images || [];
@@ -828,6 +832,20 @@
                 if (e.key === 'ArrowLeft') lbNav(-1);
                 if (e.key === 'ArrowRight') lbNav(1);
             }
+        });
+
+        // ── Ouverture directe d'un projet via l'URL (ex. blaackeagle.github.io/#deepcv) ──
+        function openFromHash() {
+            const id = decodeURIComponent(location.hash.slice(1));
+            if (projects[id]) {
+                const card = document.querySelector(`.project-card[onclick*="'${id}'"]`);
+                if (card) card.scrollIntoView({ block: 'center' });
+                openModal(id);
+            }
+        }
+        window.addEventListener('load', openFromHash);
+        window.addEventListener('hashchange', () => {
+            if (projects[location.hash.slice(1)]) openFromHash();
         });
 
         // ── CV : rendu PDF responsive via PDF.js (les iframes PDF ne marchent pas sur mobile) ──
