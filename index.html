@@ -239,6 +239,18 @@
         }
         .modal-video .video-caption { font-family: var(--font-mono); font-size: 0.7rem; font-weight: 700; color: var(--ink-faint); margin-top: 6px; }
 
+        /* ── Bloc rapport de projet (PDF) dans la modale ── */
+        .modal-report { display: flex; gap: 1.2rem; margin-top: 1.6rem; padding-top: 1.5rem; border-top: 2px solid var(--line); align-items: flex-start; }
+        .modal-report .report-thumb { flex-shrink: 0; display: block; width: 150px; border: 2px solid var(--line); transition: transform 0.2s, box-shadow 0.2s; }
+        .modal-report .report-thumb:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(0,0,0,0.5); border-color: var(--accent); }
+        .modal-report .report-thumb img { width: 100%; display: block; }
+        .modal-report .report-info { flex: 1; }
+        .modal-report .report-tag { font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; color: var(--pop); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.6rem; }
+        .modal-report .report-info p { color: var(--ink-soft); font-size: 0.88rem; line-height: 1.7; margin-bottom: 1rem; }
+        .modal-report .report-btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; background: var(--accent); color: var(--paper); border: 2px solid var(--accent); transition: all 0.18s; }
+        .modal-report .report-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.4); }
+        @media (max-width: 700px) { .modal-report { flex-direction: column; } .modal-report .report-thumb { width: 120px; } }
+
         /* ── Galerie d'images dans la modale ── */
         .modal-gallery { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 8px; margin-bottom: 1rem; scroll-snap-type: x mandatory; }
         .modal-gallery::-webkit-scrollbar { height: 4px; }
@@ -311,6 +323,26 @@
         .contact-card:hover svg { color: var(--paper); }
         .contact-card svg { width: 20px; height: 20px; color: var(--accent); transition: color 0.18s; }
         .contact-card span { font-weight: 600; font-size: 0.9rem; }
+
+        /* ── Formulaire de contact ── */
+        .contact-form { max-width: 560px; margin: 2.6rem auto 0; text-align: left; background: var(--paper-soft); border: 2px solid var(--line); box-shadow: var(--shadow-hard); padding: 2rem; }
+        .contact-form .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        .contact-form .form-field { margin-bottom: 1.1rem; }
+        .contact-form label { display: block; font-family: var(--font-mono); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--accent); margin-bottom: 0.5rem; }
+        .contact-form input, .contact-form select, .contact-form textarea {
+            width: 100%; padding: 12px 14px; background: var(--paper); border: 2px solid var(--line);
+            color: var(--ink); font-family: var(--font-main); font-size: 0.92rem; transition: border-color 0.18s;
+        }
+        .contact-form textarea { resize: vertical; min-height: 100px; }
+        .contact-form select { cursor: pointer; }
+        .contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus { outline: none; border-color: var(--accent); }
+        .contact-form input::placeholder, .contact-form textarea::placeholder { color: var(--ink-faint); }
+        .contact-form option { background: var(--paper); color: var(--ink); }
+        .contact-form .btn-primary { width: 100%; justify-content: center; margin-top: 0.4rem; }
+        .contact-form .form-status { font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; margin-top: 1rem; text-align: center; display: none; }
+        .contact-form .form-status.ok { display: block; color: var(--pop); }
+        .contact-form .form-status.err { display: block; color: #e8734a; }
+        @media (max-width: 560px) { .contact-form .form-row { grid-template-columns: 1fr; gap: 0; } .contact-form { padding: 1.4rem; } }
 
         /* ── Footer ── */
         footer { text-align: center; padding: 2rem; background: var(--paper-soft); color: var(--ink-soft); font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; position: relative; z-index: 2; border-top: 2px solid var(--line); }
@@ -492,14 +524,7 @@
             <!-- Mini-Jeux -->
             <div class="project-card reveal" onclick="openModal('minijeux')">
                 <div class="project-preview">
-                    <div class="preview-minigames">
-                        <div class="game-title">Mot Le Plus Long</div>
-                        <div class="letter-grid">
-                            <div class="letter-tile">B</div><div class="letter-tile">A</div><div class="letter-tile">N</div>
-                            <div class="letter-tile">A</div><div class="letter-tile">N</div><div class="letter-tile">E</div>
-                        </div>
-                        <div class="score-bar"><span>Joueur 1: 42 pts</span><span>Joueur 2: 38 pts</span></div>
-                    </div>
+                    <img class="preview-img" src="images/minijeux-menu.png" alt="Menu de la plateforme de mini-jeux" loading="lazy">
                     <div class="overlay"><span>Voir le projet</span></div>
                 </div>
                 <div class="project-card-body">
@@ -602,6 +627,42 @@
                     <span>GitHub</span>
                 </a>
             </div>
+
+            <form class="contact-form" id="contactForm" onsubmit="return sendContact(event)">
+                <div class="form-row">
+                    <div class="form-field">
+                        <label for="cf-prenom">Prénom</label>
+                        <input type="text" id="cf-prenom" name="Prénom" required autocomplete="given-name">
+                    </div>
+                    <div class="form-field">
+                        <label for="cf-nom">Nom</label>
+                        <input type="text" id="cf-nom" name="Nom" required autocomplete="family-name">
+                    </div>
+                </div>
+                <div class="form-field">
+                    <label for="cf-email">Adresse e-mail</label>
+                    <input type="email" id="cf-email" name="Email" required autocomplete="email">
+                </div>
+                <div class="form-field">
+                    <label for="cf-motif">Motif du contact</label>
+                    <select id="cf-motif" name="Motif" required>
+                        <option value="" disabled selected>Choisissez un motif…</option>
+                        <option value="Alternance">Proposer une alternance</option>
+                        <option value="Stage">Proposer un stage</option>
+                        <option value="Recrutement / CDI">Recrutement / CDI</option>
+                        <option value="Projet / Mission">Projet ou mission freelance</option>
+                        <option value="Autre">Autre</option>
+                    </select>
+                </div>
+                <div class="form-field">
+                    <label for="cf-message">Message</label>
+                    <textarea id="cf-message" name="Message" rows="4" placeholder="Décrivez votre besoin, le poste, l'entreprise…" required></textarea>
+                </div>
+                <input type="hidden" name="_subject" value="Nouveau contact depuis le portfolio">
+                <input type="text" name="_honey" style="display:none">
+                <button type="submit" class="btn btn-primary" id="cf-submit">Envoyer le message</button>
+                <div class="form-status" id="cf-status" role="status"></div>
+            </form>
         </div>
     </section>
 
@@ -664,6 +725,7 @@
                 type: 'Projet IA & NLP · 2026',
                 video: { src: 'videos/deepcv-demo.mp4', poster: 'videos/deepcv-demo-poster.jpg', caption: 'Démo : upload de CVs, analyse sémantique et classement par pertinence' },
                 images: ['images/deepcv-ui.png', 'images/deepcv-code.png'],
+                report: { thumb: 'images/deepcv-rapport.png', pdf: 'docs/DeepCV-Rapport.pdf', pages: 30, note: 'Rapport de projet TER complet : contexte, état de l\'art, architecture, résultats et perspectives.' },
                 body: `
                     <h4>Contexte</h4>
                     <p>Projet réalisé dans le cadre de la troisième année de Licence Informatique. L'objectif : automatiser le tri de candidatures en mesurant la proximité sémantique entre une offre de poste et un ensemble de CVs au format PDF.</p>
@@ -715,7 +777,8 @@
             minijeux: {
                 title: 'Plateforme de Mini-Jeux Multijoueur',
                 type: 'Projet collaboratif · 2025',
-                images: [],
+                video: { src: 'videos/minijeux-demo.mp4', poster: 'videos/minijeux-demo-poster.jpg', caption: 'Démo : menu de sélection et jeux de mots en temps réel' },
+                images: ['images/minijeux-menu.png'],
                 body: `
                     <h4>Contexte</h4>
                     <p>Projet collaboratif (équipe de 4) comprenant plusieurs jeux de mots interactifs avec communication temps réel entre joueurs.</p>
@@ -790,7 +853,20 @@
                 });
                 mediaHtml += '</div>';
             }
-            document.getElementById('modalBody').innerHTML = mediaHtml + p.body;
+            let reportHtml = '';
+            if (p.report) {
+                reportHtml = `<div class="modal-report">
+                    <a href="${p.report.pdf}" target="_blank" rel="noopener" class="report-thumb">
+                        <img src="${p.report.thumb}" alt="Couverture du rapport de projet" loading="lazy">
+                    </a>
+                    <div class="report-info">
+                        <div class="report-tag">Rapport de projet · PDF${p.report.pages ? ' · ' + p.report.pages + ' pages' : ''}</div>
+                        <p>${p.report.note || ''}</p>
+                        <a href="${p.report.pdf}" target="_blank" rel="noopener" class="report-btn">Lire le rapport (PDF)</a>
+                    </div>
+                </div>`;
+            }
+            document.getElementById('modalBody').innerHTML = mediaHtml + p.body + reportHtml;
             const overlay = document.getElementById('modalOverlay');
             overlay.style.display = 'flex';
             requestAnimationFrame(() => overlay.classList.add('active'));
@@ -833,6 +909,42 @@
                 if (e.key === 'ArrowRight') lbNav(1);
             }
         });
+
+        // ── Formulaire de contact (envoi via FormSubmit, sans backend) ──
+        async function sendContact(e) {
+            e.preventDefault();
+            const form = document.getElementById('contactForm');
+            const status = document.getElementById('cf-status');
+            const btn = document.getElementById('cf-submit');
+            if (form._honey.value) return false; // anti-spam (honeypot)
+            const data = {
+                'Prénom': form['Prénom'].value.trim(),
+                'Nom': form['Nom'].value.trim(),
+                'Email': form['Email'].value.trim(),
+                'Motif': form['Motif'].value,
+                'Message': form['Message'].value.trim(),
+                '_subject': 'Portfolio — ' + form['Motif'].value + ' — ' + form['Prénom'].value + ' ' + form['Nom'].value
+            };
+            btn.disabled = true; btn.textContent = 'Envoi en cours…';
+            status.className = 'form-status';
+            try {
+                const res = await fetch('https://formsubmit.co/ajax/kabourijaouad@gmail.com', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                if (!res.ok) throw new Error('http');
+                status.className = 'form-status ok';
+                status.textContent = '✓ Message envoyé, merci ! Je vous répondrai rapidement.';
+                form.reset();
+            } catch (err) {
+                status.className = 'form-status err';
+                status.innerHTML = 'Envoi impossible pour le moment. Écrivez-moi directement : <a href="mailto:kabourijaouad@gmail.com" style="color:var(--accent)">kabourijaouad@gmail.com</a>';
+            } finally {
+                btn.disabled = false; btn.textContent = 'Envoyer le message';
+            }
+            return false;
+        }
 
         // ── Ouverture directe d'un projet via l'URL (ex. blaackeagle.github.io/#deepcv) ──
         function openFromHash() {
